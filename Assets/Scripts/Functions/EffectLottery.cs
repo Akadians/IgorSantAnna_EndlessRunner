@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class EffectLottery : MonoBehaviour
 {
-    private int index;
-    public List<string> EffectList;
-    private int capacity;
-    
+    //[SerializeField] private SceneDebuffs debuffs;
+    private int randomEffect;
 
-    public string Effect;
-    
-    public string RandomEffect()
+    public void RandomDebuff()
     {
-        capacity = EffectList.Capacity;
-        index = Random.Range(0, capacity);
-        Effect = EffectList[index];
-        return Effect;
+        randomEffect = Random.Range(0, 4);
+       // debuffs.Touched(randomEffect);
     }
 }
+
+
