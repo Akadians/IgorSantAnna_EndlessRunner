@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2067480366166388947}
+  - component: {fileID: 657198051}
+  - component: {fileID: 6831114493507651762}
   m_Layer: 0
   m_Name: 2 - Scene Japan
   m_TagString: Untagged
@@ -56,6 +58,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &657198051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067480366166388946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad62de711fbf3de4a91a0095e86708e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapName: 03
+  mapGen: {fileID: 0}
+--- !u!65 &6831114493507651762
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067480366166388946}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 27.185247, y: 1, z: 1}
+  m_Center: {x: 1.0695162, y: 0, z: 13.14}
 --- !u!1001 &2067480364493208572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,6 +95,10 @@ PrefabInstance:
     - target: {fileID: 1189697016854918, guid: e1304517d24a34d348e58d276929bd24, type: 3}
       propertyPath: m_Name
       value: tile-road-straight (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189697016854918, guid: e1304517d24a34d348e58d276929bd24, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4785179486904736, guid: e1304517d24a34d348e58d276929bd24, type: 3}
       propertyPath: m_RootOrder
@@ -256,6 +289,10 @@ PrefabInstance:
     - target: {fileID: 1189697016854918, guid: e1304517d24a34d348e58d276929bd24, type: 3}
       propertyPath: m_Name
       value: tile-road-straight (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189697016854918, guid: e1304517d24a34d348e58d276929bd24, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4785179486904736, guid: e1304517d24a34d348e58d276929bd24, type: 3}
       propertyPath: m_RootOrder
@@ -1102,6 +1139,10 @@ PrefabInstance:
     - target: {fileID: 1189697016854918, guid: e1304517d24a34d348e58d276929bd24, type: 3}
       propertyPath: m_Name
       value: tile-road-straight (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189697016854918, guid: e1304517d24a34d348e58d276929bd24, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4785179486904736, guid: e1304517d24a34d348e58d276929bd24, type: 3}
       propertyPath: m_RootOrder

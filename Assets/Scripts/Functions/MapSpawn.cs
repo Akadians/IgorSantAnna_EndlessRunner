@@ -4,19 +4,32 @@ using UnityEngine;
 
 public class MapSpawn : MonoBehaviour
 {
-    [SerializeField] private MapRandomizer map;
-    void Awake()
+    [SerializeField] private string mapName;
+    private void Start()
     {
-        Initializations(); 
+        Initializations();
     }
-        
-    void Update()
+
+    [SerializeField] private MapRandomizer mapGen;
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.layer == 6)
+        {
+            StartCoroutine(ReturnPool());
+        }
+    }
+
+    private IEnumerator ReturnPool()
+    {
+        Debug.Log("Touched");
+        yield return new WaitForSeconds(1);
+        ObjectPooler.Instance.ReturnToPool(mapName, this.gameObject);
+        StopCoroutine("ReturnPool");
+        mapGen.MapGen();
     }
 
     private void Initializations()
     {
-        //map.MapGen();
+        mapGen = FindObjectOfType<MapRandomizer>().GetComponent<MapRandomizer>();
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 541366925847990284}
   - component: {fileID: 549608492562912576}
   - component: {fileID: 510028536027860540}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: tile-road-straight (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 541366925160105074}
   - component: {fileID: 549608494291009854}
   - component: {fileID: 510028535641938498}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: tile-road-straight (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 541366924679028644}
   - component: {fileID: 549608493795187432}
   - component: {fileID: 510028535062315412}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: tile-road-straight (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,6 +306,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 573561432927283226}
+  - component: {fileID: 871640345}
+  - component: {fileID: 3623114920160396528}
   m_Layer: 0
   m_Name: 1 - Scene Farm
   m_TagString: Untagged
@@ -371,6 +373,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &871640345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573561432927283221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad62de711fbf3de4a91a0095e86708e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapName: 02
+  mapGen: {fileID: 0}
+--- !u!65 &3623114920160396528
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573561432927283221}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 27.185247, y: 1, z: 1}
+  m_Center: {x: 1.0695162, y: 0, z: 13.14}
 --- !u!1001 &573561432495869412
 PrefabInstance:
   m_ObjectHideFlags: 0
