@@ -31,5 +31,12 @@ public class MapSpawn : MonoBehaviour
     private void Initializations()
     {
         mapGen = FindObjectOfType<MapRandomizer>().GetComponent<MapRandomizer>();
+        ObstaculeSpawn();
+    }
+
+    private void ObstaculeSpawn()
+    {
+        int typeGenerator = Random.Range(0, 3);
+        transform.GetChild(typeGenerator).gameObject.SetActive(true);
     }
 }

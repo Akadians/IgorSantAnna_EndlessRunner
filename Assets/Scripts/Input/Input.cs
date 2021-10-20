@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Input : MonoBehaviour
-{
+{    
+    [SerializeField] private Player player;
 
     public void Movement(InputAction.CallbackContext context)
     {
-        if (context.ReadValueAsButton())
+        if (context.performed)
         {
             //physics.SetAxis(context.ReadValue<Vector2>());
         }
@@ -16,6 +17,14 @@ public class Input : MonoBehaviour
         if (context.canceled)
         {
             //physics.SetAxis(Vector2.zero);
+        }
+    }
+
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            player.Jump();
         }
     }
 }

@@ -8,6 +8,7 @@ public sealed class Player : MonoBehaviour
     private Animator Anim;
     [SerializeField] private float speed;
     [SerializeField] private LayerMask floorMask;
+    [SerializeField] private float jumpForce;
     void Start()
     {
         Initializations();
@@ -41,5 +42,21 @@ public sealed class Player : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void Jump()
+    {
+        RigB.AddForce(Vector3.up * jumpForce);
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == 8)
+        {
+            //Endgame();
+            Debug.Log("Dead");
+            speed = 0;
+            Anim.SetBool("isDead", true);
+        }
     }
 }

@@ -1783,6 +1783,8 @@ GameObject:
   - component: {fileID: 1699960425}
   - component: {fileID: 1699960427}
   - component: {fileID: 1699960428}
+  - component: {fileID: 1699960429}
+  - component: {fileID: 1699960430}
   m_Layer: 6
   m_Name: 1 - Player
   m_TagString: Untagged
@@ -1818,7 +1820,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 1.68
   m_Direction: 1
-  m_Center: {x: 0, y: 0.91, z: 0}
+  m_Center: {x: 0, y: 0.84, z: 5.74}
 --- !u!54 &1699960426
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1869,7 +1871,59 @@ MonoBehaviour:
   speed: 15
   floorMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+  jumpForce: 300
+--- !u!114 &1699960429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699960423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57f42cc21724664ab01bb42056a7a3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1699960428}
+--- !u!114 &1699960430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699960423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: b24a7a750e8fa9e4fbd15af1cd65f6cd, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 32b28617-08c8-4be9-95e7-c37fcf035129
+    m_ActionName: Pc/KeyboardControl[/Keyboard/rightArrow,/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a7454592-1759-4120-a482-0e5593119037
+    m_ActionName: Pc/Jump[/Keyboard/space]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Gameplay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1740692216
 GameObject:
   m_ObjectHideFlags: 0
@@ -2038,6 +2092,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 32743009}
     m_Modifications:
+    - target: {fileID: 572389330404175082, guid: 65fcf066f94d36d40b963b2d3f6bd217, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 572389330957777044, guid: 65fcf066f94d36d40b963b2d3f6bd217, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 572389331562783554, guid: 65fcf066f94d36d40b963b2d3f6bd217, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 573561432927283221, guid: 65fcf066f94d36d40b963b2d3f6bd217, type: 3}
       propertyPath: m_Name
       value: 1 - Scene Farm

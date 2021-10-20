@@ -2,45 +2,7 @@
     "name": "Main_Input",
     "maps": [
         {
-            "name": "Mobile",
-            "id": "f6e3c1bc-bb9e-4f23-9f1d-11dbcac51c7c",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "724c3d89-1098-4a71-8219-843986418b60",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "d5d726fb-4e0f-4fb4-b1d5-d964c3542346",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2d905234-d20a-45e1-9ebf-f44fba7bf4b3",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Pc",
+            "name": "Gameplay",
             "id": "2d3e20c2-d737-49cb-957c-ba11f4324aa6",
             "actions": [
                 {
@@ -49,7 +11,7 @@
                     "id": "32b28617-08c8-4be9-95e7-c37fcf035129",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": ""
                 },
                 {
                     "name": "Jump",
@@ -57,7 +19,7 @@
                     "id": "a7454592-1759-4120-a482-0e5593119037",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -65,7 +27,7 @@
                     "name": "",
                     "id": "5fa3f2b2-f290-476a-a055-3f0dc45f1fc8",
                     "path": "<Keyboard>/rightArrow",
-                    "interactions": "Press",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "KeyboardControl",
@@ -76,7 +38,7 @@
                     "name": "",
                     "id": "21960cc0-89f1-4b35-b7c5-020c44e7ed4b",
                     "path": "<Keyboard>/leftArrow",
-                    "interactions": "Press",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "KeyboardControl",
