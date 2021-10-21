@@ -5,18 +5,27 @@ using UnityEngine.InputSystem;
 
 public class Input : MonoBehaviour
 {    
-    [SerializeField] private Player player;
+    [SerializeField] private Player _player;
+    private Main_Input _inputActions;
 
-    public void Movement(InputAction.CallbackContext context)
+    private void Awake()
+    {
+        Subscribe();
+    }
+
+    public void Left(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            //physics.SetAxis(context.ReadValue<Vector2>());
+            _player.ChangeLine("Left");
         }
+    }
 
-        if (context.canceled)
+    public void Right(InputAction.CallbackContext context)
+    {
+        if (context.performed)
         {
-            //physics.SetAxis(Vector2.zero);
+            _player.ChangeLine("Right");
         }
     }
 
@@ -24,7 +33,29 @@ public class Input : MonoBehaviour
     {
         if (context.performed)
         {
-            player.Jump();
+            _player.Jump();
         }
+    }
+
+    private void OnDisable()
+    {
+        Unsubscribe();
+    }
+
+    private void Subscribe()
+    {
+        _inputActions = new Main_Input();
+        _inputActions.Enable();
+        _inputActions.Gameplay.Jump.performed += Jump;
+        _inputActions.Gameplay.Left.performed += Left;
+        _inputActions.Gameplay.Right.performed += Right;        
+    }
+
+    private void Unsubscribe()
+    {
+        _inputActions.Gameplay.Left.performed -= Left;
+        _inputActions.Gameplay.Right.performed -= Right;
+        _inputActions.Gameplay.Jump.performed -= Jump;
+        _inputActions.Disable();
     }
 }

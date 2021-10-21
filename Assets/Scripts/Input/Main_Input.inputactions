@@ -6,7 +6,7 @@
             "id": "2d3e20c2-d737-49cb-957c-ba11f4324aa6",
             "actions": [
                 {
-                    "name": "KeyboardControl",
+                    "name": "Left",
                     "type": "Button",
                     "id": "32b28617-08c8-4be9-95e7-c37fcf035129",
                     "expectedControlType": "Button",
@@ -20,31 +20,17 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "5b2dc94e-82b5-454b-b805-2b9fe42bd3a4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "5fa3f2b2-f290-476a-a055-3f0dc45f1fc8",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "KeyboardControl",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "21960cc0-89f1-4b35-b7c5-020c44e7ed4b",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "KeyboardControl",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "e69ec1c4-cf5f-4d63-be44-ff1500b09259",
@@ -53,6 +39,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d3bae4bf-62fc-4a0b-9424-59b3c8711bcb",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29c0e60c-255a-4f3e-b42a-0137f3033285",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

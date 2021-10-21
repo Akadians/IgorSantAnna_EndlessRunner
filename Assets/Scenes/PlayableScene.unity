@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 0
-  m_FollowOffset: {x: 0, y: 1.5, z: -6.38}
+  m_FollowOffset: {x: 0, y: 2.5, z: -6.38}
   m_XDamping: 0.5
   m_YDamping: 1
   m_ZDamping: 1
@@ -242,6 +242,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 32743009}
     m_Modifications:
+    - target: {fileID: 1392253283, guid: 467060839369b6748b51e92381094087, type: 3}
+      propertyPath: _map
+      value: 01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1392253283, guid: 467060839369b6748b51e92381094087, type: 3}
+      propertyPath: _mapName
+      value: 01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058514976589811104, guid: 467060839369b6748b51e92381094087, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058514976604288665, guid: 467060839369b6748b51e92381094087, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058514976853559484, guid: 467060839369b6748b51e92381094087, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058514977278613183, guid: 467060839369b6748b51e92381094087, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3070207033522547809, guid: 467060839369b6748b51e92381094087, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1312,8 +1336,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 543005451}
-  m_LocalRotation: {x: 0.006767164, y: 0.0000000046524895, z: -3.148488e-11, w: 0.9999771}
-  m_LocalPosition: {x: 921.1535, y: -595.71826, z: 467.76453}
+  m_LocalRotation: {x: 0.08392637, y: 0.000000004636181, z: -3.9047554e-10, w: 0.99647194}
+  m_LocalPosition: {x: 921.1535, y: -594.71826, z: 467.76453}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1199161881}
@@ -1474,11 +1498,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fea137a80fb9b848a62fbc246ff5634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maps:
+  _value: 0
+  _maps:
   - 01
   - 02
   - 03
-  prefabs:
+  _prefabs:
   - {fileID: 3070207033522547810, guid: 467060839369b6748b51e92381094087, type: 3}
   - {fileID: 573561432927283221, guid: 65fcf066f94d36d40b963b2d3f6bd217, type: 3}
   - {fileID: 2067480366166388946, guid: 03536c1bd43684b45af6a4d76f0ad509, type: 3}
@@ -1593,16 +1618,13 @@ MonoBehaviour:
   pools:
   - tag: 01
     prefab: {fileID: 3070207033522547810, guid: 467060839369b6748b51e92381094087, type: 3}
-    size: 3
+    size: 20
   - tag: 02
     prefab: {fileID: 573561432927283221, guid: 65fcf066f94d36d40b963b2d3f6bd217, type: 3}
-    size: 3
+    size: 20
   - tag: 03
     prefab: {fileID: 2067480366166388946, guid: 03536c1bd43684b45af6a4d76f0ad509, type: 3}
-    size: 3
-  - tag: Maps
-    prefab: {fileID: 32743008}
-    size: 10
+    size: 20
 --- !u!1 &1620091462
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,9 +1840,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1.68
+  m_Height: 1.622082
   m_Direction: 1
-  m_Center: {x: 0, y: 0.84, z: 5.74}
+  m_Center: {x: 0, y: 0.86895895, z: 5.74}
 --- !u!54 &1699960426
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1832,7 +1854,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -1868,11 +1890,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf1f36c0181c0c4aaa2213ad32d9d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  floorMask:
+  _speed: 15
+  _floorMask:
     serializedVersion: 2
     m_Bits: 128
-  jumpForce: 300
+  _jumpForce: 300
+  _limiter: 5.8
+  _sideMoveSpeed: 6.5
+  _position: 0
+  _moving: 0
 --- !u!114 &1699960429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1885,7 +1911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57f42cc21724664ab01bb42056a7a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1699960428}
+  _player: {fileID: 1699960428}
 --- !u!114 &1699960430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1899,7 +1925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: b24a7a750e8fa9e4fbd15af1cd65f6cd, type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 3
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -1916,7 +1942,19 @@ MonoBehaviour:
     m_ActionId: 32b28617-08c8-4be9-95e7-c37fcf035129
     m_ActionName: Pc/KeyboardControl[/Keyboard/rightArrow,/Keyboard/leftArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1699960429}
+        m_TargetAssemblyTypeName: Input, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a7454592-1759-4120-a482-0e5593119037
     m_ActionName: Pc/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
@@ -2042,8 +2080,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070066069}
-  m_LocalRotation: {x: 0.006767164, y: 0.0000000046524895, z: -3.148488e-11, w: 0.9999771}
-  m_LocalPosition: {x: 921.1535, y: -595.71826, z: 467.76453}
+  m_LocalRotation: {x: 0.08392637, y: 0.000000004636181, z: -3.9047554e-10, w: 0.99647194}
+  m_LocalPosition: {x: 921.1535, y: -594.71826, z: 467.76453}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 166538288}
@@ -2092,18 +2130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 32743009}
     m_Modifications:
-    - target: {fileID: 572389330404175082, guid: 65fcf066f94d36d40b963b2d3f6bd217, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 572389330957777044, guid: 65fcf066f94d36d40b963b2d3f6bd217, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 572389331562783554, guid: 65fcf066f94d36d40b963b2d3f6bd217, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 573561432927283221, guid: 65fcf066f94d36d40b963b2d3f6bd217, type: 3}
       propertyPath: m_Name
       value: 1 - Scene Farm
@@ -2165,6 +2191,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 32743009}
     m_Modifications:
+    - target: {fileID: 657198051, guid: 03536c1bd43684b45af6a4d76f0ad509, type: 3}
+      propertyPath: _mapName
+      value: 03
+      objectReference: {fileID: 0}
     - target: {fileID: 2067480366166388946, guid: 03536c1bd43684b45af6a4d76f0ad509, type: 3}
       propertyPath: m_Name
       value: 2 - Scene Japan

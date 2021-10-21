@@ -73,8 +73,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad62de711fbf3de4a91a0095e86708e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapName: 03
-  mapGen: {fileID: 0}
+  _map: 03
+  mapRandomizerGen: {fileID: 0}
 --- !u!65 &6831114493507651762
 BoxCollider:
   m_ObjectHideFlags: 0

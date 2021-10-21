@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class MapSpawn : MonoBehaviour
 {
-    [SerializeField] private string mapName;
+    [SerializeField] private string _map;
+    [SerializeField] private MapRandomizer mapRandomizerGen;
+
+    //public void Initialize(MapRandomizer map)
+    //{
+    //    mapRandomizerGen = map;
+    //    ObstaculeSpawn();
+    //}
+
     private void Start()
     {
-        Initializations();
+        mapRandomizerGen = FindObjectOfType<MapRandomizer>().GetComponent<MapRandomizer>();
+        ObstaculeSpawn();
     }
-
-    [SerializeField] private MapRandomizer mapGen;
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 6)
@@ -23,16 +31,13 @@ public class MapSpawn : MonoBehaviour
     {
         Debug.Log("Touched");
         yield return new WaitForSeconds(1);
-        ObjectPooler.Instance.ReturnToPool(mapName, this.gameObject);
-        StopCoroutine("ReturnPool");
-        mapGen.MapGen();
+        gameObject.SetActive(false);
+        ObjectPooler.Instance.ReturnToPool(_map, this.gameObject);
+        mapRandomizerGen.MapGen();
+        StopCoroutine("ReturnPool");        
     }
 
-    private void Initializations()
-    {
-        mapGen = FindObjectOfType<MapRandomizer>().GetComponent<MapRandomizer>();
-        ObstaculeSpawn();
-    }
+    
 
     private void ObstaculeSpawn()
     {

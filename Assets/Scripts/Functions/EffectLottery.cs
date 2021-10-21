@@ -5,12 +5,11 @@ using UnityEngine;
 public class EffectLottery : MonoBehaviour
 {
     //[SerializeField] private SceneDebuffs debuffs;
-    private int randomEffect;
+    private int _randomEffect;
 
     public void RandomDebuff()
     {
-        randomEffect = Random.Range(0, 4);
-       // debuffs.Touched(randomEffect);
+        _randomEffect = Random.Range(0, 4);       
     }
 }
 
