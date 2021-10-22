@@ -7,9 +7,9 @@ public sealed class Player : MonoBehaviour
     [SerializeField] private LayerMask _floorMask;
     [SerializeField] private float _jumpForce;
     [SerializeField] [Range(0, 20)] private float _limiter;
-    [SerializeField] [Range(0, 10)] private float _sideMoveSpeed;
-    [SerializeField] [Range(-1, 1)] private int _position;
+    [SerializeField] [Range(0, 10)] private float _sideMoveSpeed;    
     [SerializeField] private bool _moving = false;
+    private bool _rightSide = true;
     private Rigidbody _rigB;
     private Animator _anim;
 
@@ -25,11 +25,11 @@ public sealed class Player : MonoBehaviour
         if (side == "Left")
         {
             Debug.Log("Esquerda");
-            StartCoroutine(LeftMove(_position));
+            StartCoroutine(LeftMove());
         }
         else if (side == "Right")
         {
-            StartCoroutine(RightMove(_position));
+            StartCoroutine(RightMove());
             Debug.Log("Direita");
         }
     }
@@ -65,9 +65,9 @@ public sealed class Player : MonoBehaviour
         _rigB.transform.position += Vector3.forward * _speed * Time.deltaTime;
     }
 
-    private IEnumerator LeftMove(int position)
+    private IEnumerator LeftMove()
     {
-        if (position >= 0 && _moving == false)
+        if (_rightSide == true && _moving == false)
         {
             for (float i = 0; i < _limiter; i += 0.1f)
             {
@@ -77,13 +77,13 @@ public sealed class Player : MonoBehaviour
             }
         }
 
-        StopCoroutine("LeftMove");
-        _position--;
+        StopCoroutine("LeftMove");        
+        _rightSide = false;
         _moving = false;
     }
-    private IEnumerator RightMove(int position)
+    private IEnumerator RightMove()
     {
-        if (position <= 0 && _moving == false)
+        if (_rightSide == false && _moving == false)
         {
             for (float i = 0; i < _limiter; i += 0.1f)
             {
@@ -93,8 +93,8 @@ public sealed class Player : MonoBehaviour
             }
         }
 
-        StopCoroutine("RightMove");
-        _position++;
+        StopCoroutine("RightMove");        
+        _rightSide = true;
         _moving = false;
     }
 

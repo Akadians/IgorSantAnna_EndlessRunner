@@ -242,30 +242,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 32743009}
     m_Modifications:
-    - target: {fileID: 1392253283, guid: 467060839369b6748b51e92381094087, type: 3}
-      propertyPath: _map
-      value: 01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1392253283, guid: 467060839369b6748b51e92381094087, type: 3}
-      propertyPath: _mapName
-      value: 01
-      objectReference: {fileID: 0}
-    - target: {fileID: 3058514976589811104, guid: 467060839369b6748b51e92381094087, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3058514976604288665, guid: 467060839369b6748b51e92381094087, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3058514976853559484, guid: 467060839369b6748b51e92381094087, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3058514977278613183, guid: 467060839369b6748b51e92381094087, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3070207033522547809, guid: 467060839369b6748b51e92381094087, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1311,7 +1287,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 50
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1336,8 +1312,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 543005451}
-  m_LocalRotation: {x: 0.08392637, y: 0.000000004636181, z: -3.9047554e-10, w: 0.99647194}
-  m_LocalPosition: {x: 921.1535, y: -594.71826, z: 467.76453}
+  m_LocalRotation: {x: 0.08392637, y: 0.000000009272362, z: -7.809511e-10, w: 0.99647194}
+  m_LocalPosition: {x: 922.5535, y: -594.71826, z: 467.76453}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1199161881}
@@ -1822,7 +1798,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699960423}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -75}
+  m_LocalPosition: {x: 1.4, y: 0, z: -75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 567611167}
@@ -1897,7 +1873,6 @@ MonoBehaviour:
   _jumpForce: 300
   _limiter: 5.8
   _sideMoveSpeed: 6.5
-  _position: 0
   _moving: 0
 --- !u!114 &1699960429
 MonoBehaviour:
@@ -2080,8 +2055,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070066069}
-  m_LocalRotation: {x: 0.08392637, y: 0.000000004636181, z: -3.9047554e-10, w: 0.99647194}
-  m_LocalPosition: {x: 921.1535, y: -594.71826, z: 467.76453}
+  m_LocalRotation: {x: 0.08392637, y: 0.000000009272362, z: -7.809511e-10, w: 0.99647194}
+  m_LocalPosition: {x: 922.5535, y: -594.71826, z: 467.76453}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 166538288}
@@ -2109,7 +2084,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 519561417}
   m_Follow: {fileID: 567611167}
   m_Lens:
-    FieldOfView: 50
+    FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -2191,10 +2166,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 32743009}
     m_Modifications:
-    - target: {fileID: 657198051, guid: 03536c1bd43684b45af6a4d76f0ad509, type: 3}
-      propertyPath: _mapName
-      value: 03
-      objectReference: {fileID: 0}
     - target: {fileID: 2067480366166388946, guid: 03536c1bd43684b45af6a4d76f0ad509, type: 3}
       propertyPath: m_Name
       value: 2 - Scene Japan
