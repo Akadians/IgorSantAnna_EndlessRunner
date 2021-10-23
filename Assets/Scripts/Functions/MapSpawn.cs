@@ -26,7 +26,6 @@ public class MapSpawn : MonoBehaviour
             StartCoroutine(ReturnPool());
         }
     }
-
     private IEnumerator ReturnPool()
     {
         Debug.Log("Touched");
@@ -36,9 +35,6 @@ public class MapSpawn : MonoBehaviour
         mapRandomizerGen.MapGen();
         StopCoroutine("ReturnPool");        
     }
-
-    
-
     private void ObstaculeSpawn()
     {
         int typeGenerator = Random.Range(0, 3);

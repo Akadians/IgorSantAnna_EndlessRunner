@@ -8,6 +8,7 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] private string _TextTimer;
     [SerializeField] private TextMeshProUGUI _HUDScore;
     [SerializeField] private TextMeshProUGUI _HUDTimer;
+    [SerializeField] private GameObject _GameOverPanel;
     public void ScoreHUDUpdate(int score)
     {
         _TextScore = score.ToString();
@@ -16,7 +17,6 @@ public class UI_Controller : MonoBehaviour
 
     public void TimerCount()
     {
-
         int minutes = (int)(Time.timeSinceLevelLoad / 60);
         int segunds = (int)(Time.timeSinceLevelLoad % 60);
 
@@ -27,12 +27,20 @@ public class UI_Controller : MonoBehaviour
         }
     }
 
+    public void CloseAplication()
+    {
+        CloseAplication();
+    }
+    public void CallGameOver()
+    {
+        _GameOverPanel.SetActive(true);
+        Game_Controller.GameControlerStatic.GameOver();
+    }
+
     private void Start()
     {
         Initializations();
-
     }
-
 
     private void Update()
     {
@@ -43,7 +51,5 @@ public class UI_Controller : MonoBehaviour
     private void Initializations()
     {
 
-    }
-
-
+    }        
 }

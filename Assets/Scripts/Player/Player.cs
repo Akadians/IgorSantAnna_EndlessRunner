@@ -6,6 +6,7 @@ public sealed class Player : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private LayerMask _floorMask;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private UI_Controller _UIController;
     [SerializeField] [Range(0, 20)] private float _limiter;
     [SerializeField] [Range(0, 10)] private float _sideMoveSpeed;    
     [SerializeField] private bool _moving = false;
@@ -15,10 +16,7 @@ public sealed class Player : MonoBehaviour
 
     public void Jump()
     {
-
-
         _rigB.AddForce(Vector3.up * _jumpForce);
-
     }
     public void ChangeLine(string side)
     {
@@ -48,10 +46,11 @@ public sealed class Player : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
-            //Endgame();
+            
             Debug.Log("Dead");
             _speed = 0;
             _anim.SetBool("isDead", true);
+            _UIController.CallGameOver();
         }
     }
 

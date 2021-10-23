@@ -15,34 +15,8 @@ public class ObjectPooler : MonoBehaviour
 
     
     public static ObjectPooler Instance;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
-
-
     public List<Pool> pools;
-    public Dictionary<string, Queue<GameObject>> poolDictionary;
-
-    private void Start()
-    {
-        poolDictionary = new Dictionary<string, Queue<GameObject>>();
-
-        foreach (var pool in pools)
-        {
-            Queue<GameObject> objectPool = new Queue<GameObject>();
-            var parent = Instantiate(new GameObject(pool.tag), gameObject.transform, true);
-            for (var i = 0; i < pool.size; i++)
-            {
-                var obj = Instantiate(pool.prefab, parent.transform, true);
-                obj.SetActive(false);
-                objectPool.Enqueue(obj);
-            }
-            
-            poolDictionary.Add(pool.tag, objectPool);
-        }
-    }
+    public Dictionary<string, Queue<GameObject>> poolDictionary;    
 
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, bool setObjectVisible = true)
     {
@@ -66,8 +40,7 @@ public class ObjectPooler : MonoBehaviour
         }
 
         return objectToSpawn;
-    }
-    
+    }    
     public GameObject SpawnFromPoolWithReturn(string tag, Vector3 position, Quaternion rotation)
     {
         if(!poolDictionary.ContainsKey(tag))
@@ -93,23 +66,46 @@ public class ObjectPooler : MonoBehaviour
 
         return objectToSpawn;
     }
+    public void ReturnToPool(string tag, GameObject objToReturn)
+    {
+        if (!poolDictionary.ContainsKey(tag))
+        {
+            Debug.LogWarning("Pool with tag " + tag + " doesn't exist");
+            return;
+        }
+
+        poolDictionary[tag].Enqueue(objToReturn);
+
+        objToReturn.SetActive(false);
+    }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    private void Start()
+    {
+        poolDictionary = new Dictionary<string, Queue<GameObject>>();
+
+        foreach (var pool in pools)
+        {
+            Queue<GameObject> objectPool = new Queue<GameObject>();
+            var parent = Instantiate(new GameObject(pool.tag), gameObject.transform, true);
+            for (var i = 0; i < pool.size; i++)
+            {
+                var obj = Instantiate(pool.prefab, parent.transform, true);
+                obj.SetActive(false);
+                objectPool.Enqueue(obj);
+            }
+
+            poolDictionary.Add(pool.tag, objectPool);
+        }
+    }
 
     private IEnumerator ReturnToPoolAfterSeconds(string tag, GameObject objToReturn, float seconds = 0)
     {
         yield return new WaitForSeconds(seconds);
         ReturnToPool(tag, objToReturn);
-    }
-
-    public void ReturnToPool(string tag, GameObject objToReturn)
-    {
-        if(!poolDictionary.ContainsKey(tag))
-        {
-            Debug.LogWarning("Pool with tag " + tag + " doesn't exist");
-            return;
-        }
-        
-        poolDictionary[tag].Enqueue(objToReturn);
-        
-        objToReturn.SetActive(false);
-    }
+    }   
 }

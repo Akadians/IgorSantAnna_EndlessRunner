@@ -9,8 +9,8 @@ public class MapRandomizer : MonoBehaviour, IPooledObject
     [SerializeField] private List<GameObject> _prefabs = new List<GameObject>();
     private MapType _mapType;
     private int _offSet;
-
-    private void Start()
+    
+    public void OnObjectSpawn()
     {
         StartMap();
     }
@@ -42,6 +42,11 @@ public class MapRandomizer : MonoBehaviour, IPooledObject
         }
     }
 
+    private void Start()
+    {
+        StartMap();
+    }
+
     private void StartMap()
     {
         for (int i = 0; i < _maps.Count; i++)
@@ -56,10 +61,5 @@ public class MapRandomizer : MonoBehaviour, IPooledObject
             //    mapSpawn.Initialize(this);
             //}
         }
-    }
-
-    public void OnObjectSpawn()
-    {
-        StartMap();
     }
 }

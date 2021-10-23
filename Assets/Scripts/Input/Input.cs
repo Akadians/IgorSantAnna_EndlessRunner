@@ -6,12 +6,7 @@ using UnityEngine.InputSystem;
 public class Input : MonoBehaviour
 {    
     [SerializeField] private Player _player;
-    private Main_Input _inputActions;
-
-    private void Awake()
-    {
-        Subscribe();
-    }
+    private Main_Input _inputActions;    
 
     public void Left(InputAction.CallbackContext context)
     {
@@ -36,7 +31,10 @@ public class Input : MonoBehaviour
             _player.Jump();
         }
     }
-
+    private void Awake()
+    {
+        Subscribe();
+    }
     private void OnDisable()
     {
         Unsubscribe();

@@ -11,6 +11,26 @@ public class Game_Controller : MonoBehaviour
     [SerializeField] private GameObject _PausePanel;
     private float _score;
 
+    public void GameOver()
+    {        
+        _alive = false;
+        ScoreRecorder((int)_score);
+        Time.timeScale = 0;
+    }
+    public void PauseGame()
+    {
+        if (Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
+            _PausePanel.SetActive(true);
+        }
+        else if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+            _PausePanel.SetActive(false);
+        }
+    }
+
     private void Start()
     {
         Initializations();
@@ -24,6 +44,7 @@ public class Game_Controller : MonoBehaviour
     private void Initializations()
     {
         GameControlerStatic = this;
+        _alive = true;
     }
 
     private void ScoreCount()
@@ -38,19 +59,10 @@ public class Game_Controller : MonoBehaviour
     private void Timer()
     {
         _UIController.TimerCount();
-    }
+    }    
 
-    private void PauseGame()
+    private void ScoreRecorder(int currentScore)
     {
-        if (Time.timeScale == 1)
-        {
-            Time.timeScale = 0;
-            _PausePanel.SetActive(true);
-        }
-        else if (Time.timeScale == 0)
-        {
-            Time.timeScale = 1;
-            _PausePanel.SetActive(false);
-        }
+
     }
 }
