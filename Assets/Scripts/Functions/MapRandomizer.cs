@@ -7,6 +7,7 @@ public class MapRandomizer : MonoBehaviour, IPooledObject
     [SerializeField] private int _value;
     [SerializeField] private List<string> _maps = new List<string>();
     [SerializeField] private List<GameObject> _prefabs = new List<GameObject>();
+
     private MapType _mapType;
     private int _offSet;
     
@@ -17,7 +18,6 @@ public class MapRandomizer : MonoBehaviour, IPooledObject
 
     public void MapGen()
     {
-
         _value = Random.Range(0, System.Enum.GetValues(typeof(MapType)).Length);
         
         switch ((MapType)_value)
@@ -45,6 +45,11 @@ public class MapRandomizer : MonoBehaviour, IPooledObject
     private void Start()
     {
         StartMap();
+    }
+
+    private void Initializations()
+    {
+
     }
 
     private void StartMap()

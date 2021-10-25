@@ -1,6 +1,9 @@
 using System;
-using TMPro;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using TMPro;
 
 public class UI_Controller : MonoBehaviour
 {
@@ -9,6 +12,7 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _HUDScore;
     [SerializeField] private TextMeshProUGUI _HUDTimer;
     [SerializeField] private GameObject _GameOverPanel;
+    
     public void ScoreHUDUpdate(int score)
     {
         _TextScore = score.ToString();
@@ -20,7 +24,7 @@ public class UI_Controller : MonoBehaviour
         int minutes = (int)(Time.timeSinceLevelLoad / 60);
         int segunds = (int)(Time.timeSinceLevelLoad % 60);
 
-        if (Game_Controller.GameControlerStatic._alive == true)
+        if (Game_Controller.GameControlerStatic.playerAlive == true)
         {
             _TextTimer = TimeSpan.FromMinutes(minutes).ToString("mm") + ":" + TimeSpan.FromSeconds(segunds).ToString("ss");
             _HUDTimer.text = _TextTimer;
@@ -29,7 +33,7 @@ public class UI_Controller : MonoBehaviour
 
     public void CloseAplication()
     {
-        CloseAplication();
+        Application.Quit();
     }
     public void CallGameOver()
     {
@@ -41,13 +45,6 @@ public class UI_Controller : MonoBehaviour
     {
         Initializations();
     }
-
-    private void Update()
-    {
-
-
-    }
-
     private void Initializations()
     {
 

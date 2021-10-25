@@ -10,6 +10,7 @@ public sealed class Player : MonoBehaviour
     [SerializeField] [Range(0, 20)] private float _limiter;
     [SerializeField] [Range(0, 10)] private float _sideMoveSpeed;    
     [SerializeField] private bool _moving = false;
+
     private bool _rightSide = true;
     private Rigidbody _rigB;
     private Animator _anim;
@@ -45,12 +46,11 @@ public sealed class Player : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == 8)
-        {
-            
+        {            
             Debug.Log("Dead");
             _speed = 0;
             _anim.SetBool("isDead", true);
-            _UIController.CallGameOver();
+            Invoke("EndGame", 1.5f);
         }
     }
 
@@ -109,5 +109,10 @@ public sealed class Player : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    private void EndGame()
+    {
+        _UIController.CallGameOver();
     }
 }

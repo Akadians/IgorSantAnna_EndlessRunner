@@ -1,20 +1,25 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Game_Controller : MonoBehaviour
 
 {
     public static Game_Controller GameControlerStatic;
-    public float scoreMultiplayer;
-    public bool _alive;
+
+    public float scoreMultiplicator;
+    public bool playerAlive;    
 
     [SerializeField] private UI_Controller _UIController;
     [SerializeField] private GameObject _PausePanel;
-    private float _score;
+    [SerializeField] private LeaderBoard_Controller _leadboard;
+
+    private float _currentScore;
+
 
     public void GameOver()
     {        
-        _alive = false;
-        ScoreRecorder((int)_score);
+        playerAlive = false;
+        ScoreRecorder((int)_currentScore);
         Time.timeScale = 0;
     }
     public void PauseGame()
@@ -31,6 +36,12 @@ public class Game_Controller : MonoBehaviour
         }
     }
 
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene("PlayableScene");
+        Time.timeScale = 1;
+    }
+
     private void Start()
     {
         Initializations();
@@ -40,19 +51,20 @@ public class Game_Controller : MonoBehaviour
     {
         ScoreCount();
         Timer();
+
     }
     private void Initializations()
     {
         GameControlerStatic = this;
-        _alive = true;
+        playerAlive = true;
     }
 
     private void ScoreCount()
     {
-        if (_alive == true)
+        if (playerAlive == true)
         {
-            _score += Time.deltaTime * scoreMultiplayer;
-            _UIController.ScoreHUDUpdate((int)_score);
+            _currentScore += Time.deltaTime * scoreMultiplicator;
+            _UIController.ScoreHUDUpdate((int)_currentScore);
         }
     }
 
@@ -63,6 +75,6 @@ public class Game_Controller : MonoBehaviour
 
     private void ScoreRecorder(int currentScore)
     {
-
+        _leadboard.LeaderboardComparations(currentScore);        
     }
 }
