@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 33599063004550460}
   - component: {fileID: 23653904579078914}
   - component: {fileID: 65545270200133590}
-  m_Layer: 0
+  - component: {fileID: 8936361472202959380}
+  m_Layer: 8
   m_Name: bamboo-leaves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,6 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -81,6 +83,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &65545270200133590
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -94,3 +97,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5181198, y: 2.4702919, z: 0.20498657}
   m_Center: {x: 0.04569626, y: 1.2351459, z: -0.008102626}
+--- !u!114 &8936361472202959380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342636858965572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74ef6e95b166304bab6e2f7f8e53714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

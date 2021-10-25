@@ -10,7 +10,9 @@ public class Game_Controller : MonoBehaviour
     public bool playerAlive;
 
     public delegate void GameControllerEventsHandler();
-    public GameControllerEventsHandler OnGameOver;    
+    public GameControllerEventsHandler OnGameOver;
+    public GameControllerEventsHandler OnGamePause;
+    public GameControllerEventsHandler OnGameUnpause;    
 
     [SerializeField] private UI_Controller _UIController;
     [SerializeField] private GameObject _PausePanel;
@@ -18,7 +20,11 @@ public class Game_Controller : MonoBehaviour
 
     private float _currentScore;
 
-    
+    public void Initializations()
+    {
+        Instance = this;
+        playerAlive = true;        
+    }
     public void GameOver()
     {
         OnGameOver?.Invoke();
@@ -30,13 +36,19 @@ public class Game_Controller : MonoBehaviour
     {
         if (Time.timeScale == 1)
         {
-            Time.timeScale = 0;
-            _PausePanel.SetActive(true);
-        }
-        else if (Time.timeScale == 0)
+            OnGamePause?.Invoke();
+            Time.timeScale = 0;            
+            return;
+        }        
+    }
+
+    public void UnpauseGame()
+    {
+        if (Time.timeScale == 0)
         {
-            Time.timeScale = 1;
-            _PausePanel.SetActive(false);
+            OnGameUnpause?.Invoke();
+            Time.timeScale = 1;            
+            return;
         }
     }
 
@@ -55,13 +67,7 @@ public class Game_Controller : MonoBehaviour
     {
         ScoreCount();
         Timer();
-
-    }
-    private void Initializations()
-    {
-        Instance = this;
-        playerAlive = true;
-    }
+    }    
 
     private void ScoreCount()
     {
@@ -71,12 +77,10 @@ public class Game_Controller : MonoBehaviour
             _UIController.ScoreHUDUpdate((int)_currentScore);
         }
     }
-
     private void Timer()
     {
         _UIController.TimerCount();
     }    
-
     private void ScoreRecorder(int currentScore)
     {
         _leadboard.LeaderboardComparations(currentScore);        

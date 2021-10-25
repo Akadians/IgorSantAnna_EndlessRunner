@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 33131487816205604}
   - component: {fileID: 23605977161901004}
   - component: {fileID: 136902064977736158}
-  m_Layer: 0
+  - component: {fileID: 704777614861720461}
+  m_Layer: 8
   m_Name: man-construction-worker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1941634902406556}
-  m_LocalRotation: {x: 0, y: 0.0000000033522625, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -56,6 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -84,6 +86,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &136902064977736158
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -98,3 +101,15 @@ CapsuleCollider:
   m_Height: 1.8899069
   m_Direction: 1
   m_Center: {x: 0, y: 0.9456451, z: 0.03318964}
+--- !u!114 &704777614861720461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941634902406556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74ef6e95b166304bab6e2f7f8e53714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

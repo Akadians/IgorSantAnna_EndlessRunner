@@ -5,21 +5,22 @@ using UnityEngine;
 public sealed class Player : MonoBehaviour
 {
     [SerializeField] private float _speed;
-    [SerializeField] private LayerMask _floorMask;
-    [SerializeField] private float _jumpForce;
+    [SerializeField] private LayerMask _floorMask;    
     [SerializeField] private UI_Controller _UIController;
-    [SerializeField] [Range(0, 20)] private float _limiter;
-    [SerializeField] [Range(0, 10)] private float _sideMoveSpeed;
+    [SerializeField] [Range(0, 10)] private float _limiter;
+    [SerializeField] [Range(0, 5)] private float _moveTimeInSeconds;
     [SerializeField] private bool _moving = false;
 
     private bool _rightSide = true;
     private Rigidbody _rigB;
     private Animator _anim;
 
-    public void Jump()
+    public void Initializations()
     {
-        _rigB.AddForce(Vector3.up * _jumpForce);
+        _rigB = GetComponent<Rigidbody>();
+        _anim = GetComponent<Animator>();
     }
+
     public void ChangeLine(MoveType move)
     {
         switch (move)
@@ -33,7 +34,7 @@ public sealed class Player : MonoBehaviour
                 RightMove();
                 break;            
         }
-    }
+    }    
 
     private void Start()
     {
@@ -48,17 +49,11 @@ public sealed class Player : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent(out DeathEncounter death))
-        {
-            Debug.Log("Dead");
+        {            
             EndGame();            
         }
     }
-
-    private void Initializations()
-    {
-        _rigB = GetComponent<Rigidbody>();
-        _anim = GetComponent<Animator>();
-    }
+    
     private void Moviment()
     {
         _rigB.transform.position += Vector3.forward * _speed * Time.deltaTime;
@@ -69,12 +64,12 @@ public sealed class Player : MonoBehaviour
         if (_rightSide == true && _moving == false)
         {
             _moving = true;
-            _rigB.transform.DOMoveX(_limiter, _sideMoveSpeed).OnComplete(() =>
+            _rigB.transform.DOMoveX(-_limiter, _moveTimeInSeconds).OnComplete(() =>
             {
                 _rightSide = false;
                 _moving = false;
             });
-
+            return;
         }
     }
     private void RightMove()
@@ -82,12 +77,12 @@ public sealed class Player : MonoBehaviour
         if (_rightSide == false && _moving == false)
         {
             _moving = true;
-            _rigB.transform.DOMoveX(_limiter, _sideMoveSpeed).OnComplete(() =>
+            _rigB.transform.DOMoveX(_limiter, _moveTimeInSeconds).OnComplete(() =>
             {
                 _rightSide = true;
                 _moving = false;
             });
-
+            return;
         }
     }
 

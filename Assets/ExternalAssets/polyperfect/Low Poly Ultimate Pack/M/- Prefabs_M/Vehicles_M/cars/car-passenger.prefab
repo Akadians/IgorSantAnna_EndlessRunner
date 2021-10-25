@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4329784108070404}
   - component: {fileID: 33968061040909828}
   - component: {fileID: 23954267984420880}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: car-passenger-wheel_FL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,6 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,6 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1196255751648142
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +91,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4282831317426912}
-  m_Layer: 0
+  - component: {fileID: 8376319751212660314}
+  m_Layer: 8
   m_Name: car-passenger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +106,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1196255751648142}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -115,6 +118,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8376319751212660314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196255751648142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74ef6e95b166304bab6e2f7f8e53714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1220759605104860
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +141,7 @@ GameObject:
   - component: {fileID: 4940284382815030}
   - component: {fileID: 33442820621796270}
   - component: {fileID: 23825101782225046}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: car-passenger.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,6 +185,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -195,6 +211,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1489671016061008
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +223,7 @@ GameObject:
   - component: {fileID: 4269565701632076}
   - component: {fileID: 33668957724281076}
   - component: {fileID: 23665635531472156}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: car-passenger-wheel_FR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,6 +267,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -275,6 +293,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1610420716727526
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +305,7 @@ GameObject:
   - component: {fileID: 4225004059946434}
   - component: {fileID: 33221824146257866}
   - component: {fileID: 23099987667957770}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: car-passenger-base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,6 +349,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -359,6 +379,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1767477094595308
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +391,7 @@ GameObject:
   - component: {fileID: 4905343255805620}
   - component: {fileID: 33748554404072780}
   - component: {fileID: 23108001759978526}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: car-passenger-wheel_BR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,6 +435,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -439,3 +461,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

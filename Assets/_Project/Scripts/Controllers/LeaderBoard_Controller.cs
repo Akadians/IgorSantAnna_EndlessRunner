@@ -97,7 +97,7 @@ public class LeaderBoard_Controller : MonoBehaviour
 
         LeaderboardWriter();
         _dataLead = new LeaderboardData(this);
-    }        
+    }     
 
     private void Start()
     {

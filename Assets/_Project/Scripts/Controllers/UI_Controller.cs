@@ -11,12 +11,28 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] private string _TextTimer;
     [SerializeField] private TextMeshProUGUI _HUDScore;
     [SerializeField] private TextMeshProUGUI _HUDTimer;
+    [SerializeField] private TextMeshProUGUI _HUDHighScore;
     [SerializeField] private GameObject _GameOverPanel;
-    
+    [SerializeField] private GameObject[] _PausePanels = new GameObject[3];
+    [SerializeField] private LeaderBoard_Controller lead;
+
+    public void Initializations()
+    {
+        Game_Controller.Instance.OnGameOver += CallGameOver;
+        Game_Controller.Instance.OnGamePause += CallPausePanels;
+        Game_Controller.Instance.OnGameUnpause += DisablePausePanels;
+    }
     public void ScoreHUDUpdate(int score)
     {
         _TextScore = score.ToString();
         _HUDScore.text = _TextScore;
+        _HUDHighScore.text = lead.leaderboardScores[0].ToString();
+
+        if(lead.leaderboardScores[0] < score)
+        {
+            _HUDHighScore.text = score.ToString();
+            return;
+        }
     }
 
     public void TimerCount()
@@ -34,23 +50,35 @@ public class UI_Controller : MonoBehaviour
     public void CloseAplication()
     {
         Application.Quit();
-    }
-    public void CallGameOver()
-    {
-        _GameOverPanel.SetActive(true);        
-    }
+    }    
 
     private void Start()
     {
         Initializations();
     }
-    private void Initializations()
+
+    private void CallGameOver()
     {
-        Game_Controller.Instance.OnGameOver += CallGameOver;
+        _GameOverPanel.SetActive(true);
     }
 
+    private void CallPausePanels()
+    {
+        _PausePanels[0].SetActive(true);
+        _PausePanels[1].SetActive(true);
+        _PausePanels[2].SetActive(false);
+    }
+
+    private void DisablePausePanels()
+    {
+        _PausePanels[0].SetActive(false);
+        _PausePanels[1].SetActive(false);
+        _PausePanels[2].SetActive(true);
+    }
     private void OnDisable()
     {
         Game_Controller.Instance.OnGameOver -= CallGameOver;
+        Game_Controller.Instance.OnGamePause -= CallPausePanels;
+        Game_Controller.Instance.OnGameUnpause -= DisablePausePanels;
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4011363882973004}
   - component: {fileID: 33366417934258648}
   - component: {fileID: 23686842060141956}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: forklift-base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,6 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,6 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1274958811791080
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +93,7 @@ GameObject:
   - component: {fileID: 4136938737790034}
   - component: {fileID: 33947049852760760}
   - component: {fileID: 23250689469429428}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lift
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,6 +137,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -160,6 +163,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1301327655511352
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +175,7 @@ GameObject:
   - component: {fileID: 4508616757198842}
   - component: {fileID: 33049691001144538}
   - component: {fileID: 23898635494875556}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: forklift-wheel_FR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,6 +219,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -240,6 +245,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1570276881957526
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +257,7 @@ GameObject:
   - component: {fileID: 4543932727374828}
   - component: {fileID: 33590895163268220}
   - component: {fileID: 23671279514602348}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: forklift-wheel_FL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,6 +301,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -320,6 +327,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1632047528645566
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +339,7 @@ GameObject:
   - component: {fileID: 4414777949401110}
   - component: {fileID: 33824760288530634}
   - component: {fileID: 23957504683073532}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: forklift-wheel_BL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,6 +383,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -400,6 +409,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1703426722293990
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +420,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4424312510791526}
   - component: {fileID: 65933821288302076}
-  m_Layer: 0
+  - component: {fileID: 7153567884271939146}
+  m_Layer: 8
   m_Name: forklift
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +435,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703426722293990}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -450,6 +461,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.243856, z: 2.1408691}
   m_Center: {x: 0, y: 1.0687153, z: 0.043571472}
+--- !u!114 &7153567884271939146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703426722293990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74ef6e95b166304bab6e2f7f8e53714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1892863151626530
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,7 +484,7 @@ GameObject:
   - component: {fileID: 4695136052856140}
   - component: {fileID: 33535952537201170}
   - component: {fileID: 23961095871670650}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: forklift-wheel_BR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,6 +528,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -530,3 +554,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

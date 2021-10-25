@@ -10,7 +10,12 @@ public class MapRandomizer : MonoBehaviour, IPooledObject
 
     private MapType _mapType;
     private int _offSet;
-    
+
+    public void Initializations()
+    {
+        StartMap();
+    }
+
     public void OnObjectSpawn()
     {
         StartMap();
@@ -44,12 +49,7 @@ public class MapRandomizer : MonoBehaviour, IPooledObject
 
     private void Start()
     {
-        StartMap();
-    }
-
-    private void Initializations()
-    {
-
+        Initializations();
     }
 
     private void StartMap()

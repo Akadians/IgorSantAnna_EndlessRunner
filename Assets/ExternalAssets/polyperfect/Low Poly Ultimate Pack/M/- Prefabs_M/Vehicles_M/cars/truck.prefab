@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33434954877487924}
   - component: {fileID: 23627634807676218}
   - component: {fileID: 64032696538419602}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: truck-wheel_FR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 33576256965095722}
   - component: {fileID: 23525450001489692}
   - component: {fileID: 64728835971851864}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: truck-door_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 33889929806734494}
   - component: {fileID: 23101705913766214}
   - component: {fileID: 64217238372936246}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: truck-wheel_BR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 33577077441429512}
   - component: {fileID: 23192102338859986}
   - component: {fileID: 64234643127888008}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: truck-wheel_BL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 33279451087651734}
   - component: {fileID: 23601261787064508}
   - component: {fileID: 64110827970763908}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: truck-base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 33958772233933240}
   - component: {fileID: 23728563611539732}
   - component: {fileID: 64036830865869508}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: truck-door_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 33217937736732274}
   - component: {fileID: 23303693197400710}
   - component: {fileID: 64230863808191724}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: truck-wheel_FL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -694,7 +694,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4473109091760242}
   - component: {fileID: 4892874267926346404}
-  m_Layer: 0
+  - component: {fileID: 724538465465014509}
+  m_Layer: 8
   m_Name: truck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -708,7 +709,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1721446255129176}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -733,5 +734,17 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.9648237, y: 3.3182466, z: 7.5016804}
-  m_Center: {x: -0.005158186, y: 1.1591233, z: 0.5062394}
+  m_Size: {x: 2.327299, y: 3.3182466, z: 6.6020584}
+  m_Center: {x: 0.069935024, y: 1.1591233, z: 0.01782608}
+--- !u!114 &724538465465014509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721446255129176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74ef6e95b166304bab6e2f7f8e53714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

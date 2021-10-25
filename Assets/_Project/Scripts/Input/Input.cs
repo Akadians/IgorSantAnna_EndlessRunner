@@ -9,6 +9,10 @@ public class Input : MonoBehaviour
 
     private Main_Input _inputActions;    
 
+    public void Initializations()
+    {
+        Subscribe();
+    }
     public void Left(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -27,7 +31,7 @@ public class Input : MonoBehaviour
 
     private void Awake()
     {
-        Subscribe();
+        Initializations();
     }
     private void OnDisable()
     {
