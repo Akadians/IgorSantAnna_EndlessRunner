@@ -5,14 +5,15 @@ using UnityEngine.UI;
 public class LeaderBoard_Controller : MonoBehaviour
 {
     public TextMeshProUGUI[] leaderboardPositions = new TextMeshProUGUI[10];
-    public int[] leaderboardScores = new int[10];
+    public int[] leaderboardScores = new int [10];
 
     [SerializeField] private Image[] _colorLine = new Image[10];
-    [SerializeField] private LeaderboardData _dataLead;
+    [SerializeField] private LeaderboardData _dataLead;    
 
     public void Initializations()
-    {
-        LeaderboardWriter();
+    {        
+        _dataLead.Load();
+        LeaderboardWriter();        
     }
     public void LeaderboardComparations(int score)
     {
@@ -95,9 +96,24 @@ public class LeaderBoard_Controller : MonoBehaviour
             return;
         }
 
-        LeaderboardWriter();
-        _dataLead = new LeaderboardData(this);
-    }     
+        _dataLead.Save();
+        LeaderboardWriter();        
+    }    
+    
+    public void LoadLeadBoard(int[] positions)
+    {
+        leaderboardScores[0] = positions[0];
+        leaderboardScores[1] = positions[1];
+        leaderboardScores[2] = positions[2];
+        leaderboardScores[3] = positions[3];
+        leaderboardScores[4] = positions[4];
+        leaderboardScores[5] = positions[5];
+        leaderboardScores[6] = positions[6];
+        leaderboardScores[7] = positions[7];
+        leaderboardScores[8] = positions[8];
+        leaderboardScores[9] = positions[9];        
+
+    }
 
     private void Start()
     {
@@ -115,5 +131,5 @@ public class LeaderBoard_Controller : MonoBehaviour
         leaderboardPositions[2].text = leaderboardScores[2].ToString();
         leaderboardPositions[1].text = leaderboardScores[1].ToString();
         leaderboardPositions[0].text = leaderboardScores[0].ToString();
-    }        
+    } 
 }

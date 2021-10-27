@@ -709,6 +709,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108169169}
   m_CullTransparentMesh: 1
+--- !u!1 &150495183
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 150495185}
+  - component: {fileID: 150495184}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &150495184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150495183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf70622c0228dc46a1c0dcb3f4861ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leaderboard: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  _leadControll: {fileID: 1328224329941063418}
+--- !u!224 &150495185
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150495183}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 359577879}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &166538287
 GameObject:
   m_ObjectHideFlags: 3
@@ -1315,6 +1365,7 @@ RectTransform:
   - {fileID: 1328224329491662579}
   - {fileID: 1328224331321653907}
   - {fileID: 1328224330614552792}
+  - {fileID: 150495185}
   m_Father: {fileID: 1153000581}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9586,7 +9637,7 @@ MonoBehaviour:
   - {fileID: 1007675450}
   - {fileID: 1191219772}
   - {fileID: 75840250}
-  leaderboardScores: f4010000c2010000900100005e0100002c010000fa000000c8000000960000006400000032000000
+  leaderboardScores: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   _colorLine:
   - {fileID: 597672492}
   - {fileID: 1047428505}
@@ -9598,8 +9649,7 @@ MonoBehaviour:
   - {fileID: 2058838560}
   - {fileID: 292861440}
   - {fileID: 471788339}
-  _dataLead:
-    leaderboard: 
+  _dataLead: {fileID: 150495184}
 --- !u!114 &1328224330029054102
 MonoBehaviour:
   m_ObjectHideFlags: 0

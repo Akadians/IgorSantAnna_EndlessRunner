@@ -3,7 +3,9 @@ guid: 6bf70622c0228dc46a1c0dcb3f4861ca
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _leaderboardObject: {fileID: 6291619441986733280, guid: 1908e83085b9abc49995e8e10707b991, type: 3}
+  - _leadControll: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

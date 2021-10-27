@@ -1,27 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
-[System.Serializable]
-public class LeaderboardData
+public class LeaderboardData : MonoBehaviour
 {
-    public int[] leaderboard;
+    [SerializeField] private int[] leaderboard = new int[10];
 
-    public LeaderboardData (LeaderBoard_Controller lead)
+    [SerializeField] private LeaderBoard_Controller _leadControll;
+
+    private string _dataRecord;
+
+    public void Initializations()
+    {               
+        SaveSystem.Init();        
+    }
+    public void Save()
     {
-        leaderboard = new int[10];
+        leaderboard[0] = _leadControll.leaderboardScores[0];
+        leaderboard[1] = _leadControll.leaderboardScores[1];
+        leaderboard[2] = _leadControll.leaderboardScores[2];
+        leaderboard[3] = _leadControll.leaderboardScores[3];
+        leaderboard[4] = _leadControll.leaderboardScores[4];
+        leaderboard[5] = _leadControll.leaderboardScores[5];
+        leaderboard[6] = _leadControll.leaderboardScores[6];
+        leaderboard[7] = _leadControll.leaderboardScores[7];
+        leaderboard[8] = _leadControll.leaderboardScores[8];
+        leaderboard[9] = _leadControll.leaderboardScores[9];
 
-        leaderboard[0] = lead.leaderboardScores[0];
-        leaderboard[1] = lead.leaderboardScores[1];
-        leaderboard[2] = lead.leaderboardScores[2];
-        leaderboard[3] = lead.leaderboardScores[3];
-        leaderboard[4] = lead.leaderboardScores[4];
-        leaderboard[5] = lead.leaderboardScores[5];
-        leaderboard[6] = lead.leaderboardScores[6];
-        leaderboard[7] = lead.leaderboardScores[7];
-        leaderboard[8] = lead.leaderboardScores[8];
-        leaderboard[9] = lead.leaderboardScores[9];
-    }    
+        _dataRecord = JsonUtility.ToJson(this);
+        SaveSystem.SaveBoard(_dataRecord);
+    }
+
+    public void Load()
+    {
+        string _dataLoaded = SaveSystem.LoadBoard();
+
+        if (_dataLoaded != null)
+        {
+            LeaderboardData lead = JsonUtility.FromJson<LeaderboardData>(_dataLoaded);
+            _leadControll.LoadLeadBoard(lead.leaderboard);
+        }
+    }
+
+    private void Awake()
+    {
+        Initializations();
+    }
 }
 
 

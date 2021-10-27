@@ -29,7 +29,7 @@ public class Game_Controller : MonoBehaviour
     {
         OnGameOver?.Invoke();
         playerAlive = false;
-        ScoreRecorder((int)_currentScore);
+        ScoreRecorder((int)_currentScore);        
         Time.timeScale = 0;
     }
     public void PauseGame()
