@@ -1,126 +1,107 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LeaderBoard_Controller : MonoBehaviour
+public class LeaderboardController : MonoBehaviour
 {
     public TextMeshProUGUI[] leaderboardPositions = new TextMeshProUGUI[10];
-    public int[] leaderboardScores = new int [10];
+    public int[] leaderboardScores;
 
     [SerializeField] private Image[] _colorLine = new Image[10];
-    [SerializeField] private LeaderboardData _dataLead;    
+    [SerializeField] private LeaderboardDataMethods _dataLead;
 
     public void Initializations()
-    {        
-        _dataLead.Load();
-        LeaderboardWriter();        
+    {
+        Debug.Log("LeadeboardController");
+
+        GameController.instance.OnLoadLeaderboard += LoadData;
+        GameController.instance.OnSaveNewBoard += SaveData;
+
+        leaderboardScores = new int[10];              
     }
     public void LeaderboardComparations(int score)
-    {
+    {        
         if (score > leaderboardScores[9] && score <= leaderboardScores[8])
         {
             leaderboardScores[9] = score;
-            _colorLine[9].color = Color.green;
-            return;
+            _colorLine[9].color = Color.green;            
         }
 
-        if (score > leaderboardScores[8] && score <= leaderboardScores[7])
+        else if (score > leaderboardScores[8] && score <= leaderboardScores[7])
         {
             leaderboardScores[9] = leaderboardScores[8];
             leaderboardScores[8] = score;
-            _colorLine[8].color = Color.green;
-            return;
+            _colorLine[8].color = Color.green;            
         }
 
-        if (score > leaderboardScores[7] && score <= leaderboardScores[6])
+        else if (score > leaderboardScores[7] && score <= leaderboardScores[6])
         {
             leaderboardScores[8] = leaderboardScores[7];
             leaderboardScores[7] = score;
-            _colorLine[7].color = Color.green;
-            return;
+            _colorLine[7].color = Color.green;            
         }
 
-        if (score > leaderboardScores[6] && score <= leaderboardScores[5])
+        else if (score > leaderboardScores[6] && score <= leaderboardScores[5])
         {
             leaderboardScores[7] = leaderboardScores[6];
             leaderboardScores[6] = score;
-            _colorLine[6].color = Color.green;
-            return;
+            _colorLine[6].color = Color.green;            
         }
 
-        if (score > leaderboardScores[5] && score <= leaderboardScores[4])
+        else if (score > leaderboardScores[5] && score <= leaderboardScores[4])
         {
             leaderboardScores[6] = leaderboardScores[5];
             leaderboardScores[5] = score;
-            _colorLine[5].color = Color.green;
-            return;
+            _colorLine[5].color = Color.green;            
         }
 
-        if (score > leaderboardScores[4] && score <= leaderboardScores[3])
+        else if (score > leaderboardScores[4] && score <= leaderboardScores[3])
         {
             leaderboardScores[5] = leaderboardScores[4];
             leaderboardScores[4] = score;
-            _colorLine[4].color = Color.green;
-            return;
+            _colorLine[4].color = Color.green;            
         }
 
-        if (score > leaderboardScores[3] && score <= leaderboardScores[2])
+        else if (score > leaderboardScores[3] && score <= leaderboardScores[2])
         {
             leaderboardScores[4] = leaderboardScores[3];
             leaderboardScores[3] = score;
-            _colorLine[3].color = Color.green;
-            return;
+            _colorLine[3].color = Color.green;            
         }
 
-        if (score > leaderboardScores[2] && score <= leaderboardScores[1])
+        else if (score > leaderboardScores[2] && score <= leaderboardScores[1])
         {
             leaderboardScores[3] = leaderboardScores[2];
             leaderboardScores[2] = score;
-            _colorLine[2].color = Color.green;
-            return;
+            _colorLine[2].color = Color.green;            
         }
 
-        if (score > leaderboardScores[1] && score <= leaderboardScores[0])
+        else if (score > leaderboardScores[1] && score <= leaderboardScores[0])
         {
             leaderboardScores[2] = leaderboardScores[1];
             leaderboardScores[1] = score;
-            _colorLine[1].color = Color.green;
-            return;
+            _colorLine[1].color = Color.green;            
         }
 
-        if (score > leaderboardScores[0])
+        else if (score > leaderboardScores[0])
         {
             leaderboardScores[1] = leaderboardScores[0];
             leaderboardScores[0] = score;
-            _colorLine[0].color = Color.green;
-            return;
+            _colorLine[0].color = Color.green;            
         }
-
-        _dataLead.Save();
+        
         LeaderboardWriter();        
-    }    
-    
-    public void LoadLeadBoard(int[] positions)
-    {
-        leaderboardScores[0] = positions[0];
-        leaderboardScores[1] = positions[1];
-        leaderboardScores[2] = positions[2];
-        leaderboardScores[3] = positions[3];
-        leaderboardScores[4] = positions[4];
-        leaderboardScores[5] = positions[5];
-        leaderboardScores[6] = positions[6];
-        leaderboardScores[7] = positions[7];
-        leaderboardScores[8] = positions[8];
-        leaderboardScores[9] = positions[9];        
-
-    }
-
+    }      
+   
     private void Start()
     {
         Initializations();       
     }    
     private void LeaderboardWriter()
-    {
+    {        
         leaderboardPositions[9].text = leaderboardScores[9].ToString();
         leaderboardPositions[8].text = leaderboardScores[8].ToString();
         leaderboardPositions[7].text = leaderboardScores[7].ToString();
@@ -132,4 +113,21 @@ public class LeaderBoard_Controller : MonoBehaviour
         leaderboardPositions[1].text = leaderboardScores[1].ToString();
         leaderboardPositions[0].text = leaderboardScores[0].ToString();
     } 
+
+    private void LoadData()
+    {
+        _dataLead.Load();
+        LeaderboardWriter();
+    }
+
+    private void SaveData()
+    {
+        _dataLead.Save();
+    }
+
+    private void OnDisable()
+    {
+        GameController.instance.OnLoadLeaderboard -= LoadData;
+        GameController.instance.OnSaveNewBoard -= SaveData;
+    }
 }

@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using TMPro;
 
-public class UI_Controller : MonoBehaviour
+public class UIController : MonoBehaviour
 {
     [SerializeField] private string _TextScore;
     [SerializeField] private string _TextTimer;
@@ -14,21 +14,23 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _HUDHighScore;
     [SerializeField] private GameObject _GameOverPanel;
     [SerializeField] private GameObject[] _PausePanels = new GameObject[3];
-    [SerializeField] private LeaderBoard_Controller lead;
+    [SerializeField] private LeaderboardController _lead;
 
     public void Initializations()
     {
-        Game_Controller.Instance.OnGameOver += CallGameOver;
-        Game_Controller.Instance.OnGamePause += CallPausePanels;
-        Game_Controller.Instance.OnGameUnpause += DisablePausePanels;
+        Debug.Log("UIController");
+
+        GameController.instance.OnGameOver += CallGameOver;
+        GameController.instance.OnGamePause += CallPausePanels;
+        GameController.instance.OnGameUnpause += DisablePausePanels;        
     }
     public void ScoreHUDUpdate(int score)
-    {
+    {        
         _TextScore = score.ToString();
         _HUDScore.text = _TextScore;
-        _HUDHighScore.text = lead.leaderboardScores[0].ToString();
+        _HUDHighScore.text = _lead.leaderboardScores[0].ToString();        
 
-        if(lead.leaderboardScores[0] < score)
+        if(_lead.leaderboardScores[0] < score)
         {
             _HUDHighScore.text = score.ToString();
             return;
@@ -40,7 +42,7 @@ public class UI_Controller : MonoBehaviour
         int minutes = (int)(Time.timeSinceLevelLoad / 60);
         int segunds = (int)(Time.timeSinceLevelLoad % 60);
 
-        if (Game_Controller.Instance.playerAlive == true)
+        if (GameController.instance.playerAlive == true)
         {
             _TextTimer = TimeSpan.FromMinutes(minutes).ToString("mm") + ":" + TimeSpan.FromSeconds(segunds).ToString("ss");
             _HUDTimer.text = _TextTimer;
@@ -77,8 +79,8 @@ public class UI_Controller : MonoBehaviour
     }
     private void OnDisable()
     {
-        Game_Controller.Instance.OnGameOver -= CallGameOver;
-        Game_Controller.Instance.OnGamePause -= CallPausePanels;
-        Game_Controller.Instance.OnGameUnpause -= DisablePausePanels;
+        GameController.instance.OnGameOver -= CallGameOver;
+        GameController.instance.OnGamePause -= CallPausePanels;
+        GameController.instance.OnGameUnpause -= DisablePausePanels;
     }
 }

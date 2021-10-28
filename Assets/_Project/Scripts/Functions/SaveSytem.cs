@@ -4,7 +4,7 @@ using System.Runtime.Serialization.Json;
 
 public class SaveSytem
 {
-    public static void SaveScore(LeaderBoard_Controller lead)
+    public static void SaveScore(LeaderboardController lead)
     {
         
     }

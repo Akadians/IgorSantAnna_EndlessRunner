@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: 6bf70622c0228dc46a1c0dcb3f4861ca
+guid: 5b745d5dd6b24fc49b748e35bf183025
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - _leaderboardObject: {fileID: 6291619441986733280, guid: 1908e83085b9abc49995e8e10707b991, type: 3}
-  - _leadControll: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

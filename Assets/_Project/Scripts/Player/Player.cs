@@ -4,9 +4,11 @@ using UnityEngine;
 
 public sealed class Player : MonoBehaviour
 {
+    public bool canPick;
+
     [SerializeField] private float _speed;
     [SerializeField] private LayerMask _floorMask;    
-    [SerializeField] private UI_Controller _UIController;
+    [SerializeField] private UIController _UIController;
     [SerializeField] [Range(0, 10)] private float _limiter;
     [SerializeField] [Range(0, 5)] private float _moveTimeInSeconds;
     [SerializeField] private bool _moving = false;
@@ -19,6 +21,7 @@ public sealed class Player : MonoBehaviour
     {
         _rigB = GetComponent<Rigidbody>();
         _anim = GetComponent<Animator>();
+        canPick = true;
     }
 
     public void ChangeLine(MoveType move)
@@ -52,8 +55,8 @@ public sealed class Player : MonoBehaviour
         {            
             EndGame();            
         }
-    }
-    
+    }    
+
     private void Moviment()
     {
         _rigB.transform.position += Vector3.forward * _speed * Time.deltaTime;
@@ -108,7 +111,7 @@ public sealed class Player : MonoBehaviour
         IEnumerator GameOverDelay() 
         {
             yield return new WaitForSeconds(1.5f);
-            Game_Controller.Instance.GameOver();
+            GameController.instance.GameOver();
             StopCoroutine(GameOverDelay());
         }        
     }

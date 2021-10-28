@@ -7,8 +7,7 @@ public class Input : MonoBehaviour
 {    
     [SerializeField] private Player _player;
 
-    private Main_Input _inputActions;    
-
+    private Main_Input _inputActions;   
     public void Initializations()
     {
         Subscribe();

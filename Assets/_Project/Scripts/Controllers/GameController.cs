@@ -1,35 +1,39 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Game_Controller : MonoBehaviour
-
+public class GameController : MonoBehaviour
 {
-    public static Game_Controller Instance;
+    public static GameController instance;
 
     public float scoreMultiplicator;
     public bool playerAlive;
 
     public delegate void GameControllerEventsHandler();
+
     public GameControllerEventsHandler OnGameOver;
     public GameControllerEventsHandler OnGamePause;
-    public GameControllerEventsHandler OnGameUnpause;    
+    public GameControllerEventsHandler OnGameUnpause;
+    public GameControllerEventsHandler OnLoadLeaderboard;
+    public GameControllerEventsHandler OnSaveNewBoard;
 
-    [SerializeField] private UI_Controller _UIController;
+    [SerializeField] private UIController _UIController;
     [SerializeField] private GameObject _PausePanel;
-    [SerializeField] private LeaderBoard_Controller _leadboard;
+    [SerializeField] private LeaderboardController _leadboard;
 
     private float _currentScore;
 
     public void Initializations()
     {
-        Instance = this;
+        Debug.Log("GameController");
+        instance = this;
         playerAlive = true;        
     }
     public void GameOver()
     {
         OnGameOver?.Invoke();
         playerAlive = false;
-        ScoreRecorder((int)_currentScore);        
+        ScoreRecorder((int)_currentScore);
+        OnSaveNewBoard?.Invoke();
         Time.timeScale = 0;
     }
     public void PauseGame()
@@ -58,7 +62,7 @@ public class Game_Controller : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    private void Start()
+    private void Awake()
     {
         Initializations();
     }
@@ -73,6 +77,7 @@ public class Game_Controller : MonoBehaviour
     {
         if (playerAlive == true)
         {
+            OnLoadLeaderboard?.Invoke();
             _currentScore += Time.deltaTime * scoreMultiplicator;
             _UIController.ScoreHUDUpdate((int)_currentScore);
         }
