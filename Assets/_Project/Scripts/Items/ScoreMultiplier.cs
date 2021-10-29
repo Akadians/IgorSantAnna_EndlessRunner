@@ -14,6 +14,10 @@ public class ScoreMultiplier : MonoBehaviour, IPooledObject
     {
         _player = FindObjectOfType<Player>().GetComponent<Player>();
     }
+    public void OnObjectSpawn()
+    {
+        PickUp();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -30,12 +34,7 @@ public class ScoreMultiplier : MonoBehaviour, IPooledObject
         _flag.SetActive(true);
         _child.SetActive(false);
         StartCoroutine(EffectEvent());
-    }
-
-    public void OnObjectSpawn()
-    {
-        PickUp();
-    }
+    }    
 
     private IEnumerator EffectEvent()
     {
@@ -43,6 +42,7 @@ public class ScoreMultiplier : MonoBehaviour, IPooledObject
         GameController.instance.scoreMultiplicator /= _multiplier;
         _player.canPick = true;
         ObjectPooler.Instance.ReturnToPool("Bonnus", gameObject);
+        _flag.SetActive(false);
         StopCoroutine(EffectEvent());
     }
 

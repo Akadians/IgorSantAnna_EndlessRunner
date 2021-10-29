@@ -56,6 +56,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3141847273768635398, guid: 2ccbb421b4f2d4cf2bdfe2ee9934bfd2, type: 3}
+      propertyPath: _flag
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141847273768635398, guid: 2ccbb421b4f2d4cf2bdfe2ee9934bfd2, type: 3}
       propertyPath: _child
       value: 
       objectReference: {fileID: 3681716913978497426}
