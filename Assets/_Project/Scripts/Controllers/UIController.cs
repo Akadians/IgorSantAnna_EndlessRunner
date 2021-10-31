@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using DG.Tweening;
 
-public class UIController : MonoBehaviour
+public sealed class UIController : MonoBehaviour
 {
     [SerializeField] private string _TextScore;
     [SerializeField] private string _TextTimer;

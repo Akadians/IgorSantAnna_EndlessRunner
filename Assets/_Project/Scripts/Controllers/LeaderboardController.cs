@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,96 +9,104 @@ public class LeaderboardController : MonoBehaviour
 
     [SerializeField] private Image[] _colorLine = new Image[10];
     [SerializeField] private LeaderboardDataMethods _dataLead;
+    [SerializeField] private bool _inTitle = false;
 
     public void Initializations()
     {
         Debug.Log("LeadeboardController");
 
-        GameController.instance.OnLoadLeaderboard += LoadData;
-        GameController.instance.OnSaveNewBoard += SaveData;
+        if (!_inTitle)
+        {
+            GameController.instance.OnLoadLeaderboard += LoadData;
+            GameController.instance.OnSaveNewBoard += SaveData;
+        }
+        else if(_inTitle)
+        {
+            TitleController.instance.OnLoadTitle += LoadData;
+        }
 
-        leaderboardScores = new int[10];              
+        leaderboardScores = new int[10];
     }
     public void LeaderboardComparations(int score)
-    {        
+    {
         if (score > leaderboardScores[9] && score <= leaderboardScores[8])
         {
             leaderboardScores[9] = score;
-            _colorLine[9].color = Color.green;            
+            _colorLine[9].color = Color.green;
         }
 
         else if (score > leaderboardScores[8] && score <= leaderboardScores[7])
         {
             leaderboardScores[9] = leaderboardScores[8];
             leaderboardScores[8] = score;
-            _colorLine[8].color = Color.green;            
+            _colorLine[8].color = Color.green;
         }
 
         else if (score > leaderboardScores[7] && score <= leaderboardScores[6])
         {
             leaderboardScores[8] = leaderboardScores[7];
             leaderboardScores[7] = score;
-            _colorLine[7].color = Color.green;            
+            _colorLine[7].color = Color.green;
         }
 
         else if (score > leaderboardScores[6] && score <= leaderboardScores[5])
         {
             leaderboardScores[7] = leaderboardScores[6];
             leaderboardScores[6] = score;
-            _colorLine[6].color = Color.green;            
+            _colorLine[6].color = Color.green;
         }
 
         else if (score > leaderboardScores[5] && score <= leaderboardScores[4])
         {
             leaderboardScores[6] = leaderboardScores[5];
             leaderboardScores[5] = score;
-            _colorLine[5].color = Color.green;            
+            _colorLine[5].color = Color.green;
         }
 
         else if (score > leaderboardScores[4] && score <= leaderboardScores[3])
         {
             leaderboardScores[5] = leaderboardScores[4];
             leaderboardScores[4] = score;
-            _colorLine[4].color = Color.green;            
+            _colorLine[4].color = Color.green;
         }
 
         else if (score > leaderboardScores[3] && score <= leaderboardScores[2])
         {
             leaderboardScores[4] = leaderboardScores[3];
             leaderboardScores[3] = score;
-            _colorLine[3].color = Color.green;            
+            _colorLine[3].color = Color.green;
         }
 
         else if (score > leaderboardScores[2] && score <= leaderboardScores[1])
         {
             leaderboardScores[3] = leaderboardScores[2];
             leaderboardScores[2] = score;
-            _colorLine[2].color = Color.green;            
+            _colorLine[2].color = Color.green;
         }
 
         else if (score > leaderboardScores[1] && score <= leaderboardScores[0])
         {
             leaderboardScores[2] = leaderboardScores[1];
             leaderboardScores[1] = score;
-            _colorLine[1].color = Color.green;            
+            _colorLine[1].color = Color.green;
         }
 
         else if (score > leaderboardScores[0])
         {
             leaderboardScores[1] = leaderboardScores[0];
             leaderboardScores[0] = score;
-            _colorLine[0].color = Color.green;            
+            _colorLine[0].color = Color.green;
         }
-        
-        LeaderboardWriter();        
-    }      
-   
+
+        LeaderboardWriter();
+    }
+
     private void Start()
     {
-        Initializations();       
-    }    
+        Initializations();
+    }
     private void LeaderboardWriter()
-    {        
+    {
         leaderboardPositions[9].text = leaderboardScores[9].ToString();
         leaderboardPositions[8].text = leaderboardScores[8].ToString();
         leaderboardPositions[7].text = leaderboardScores[7].ToString();
@@ -112,7 +117,7 @@ public class LeaderboardController : MonoBehaviour
         leaderboardPositions[2].text = leaderboardScores[2].ToString();
         leaderboardPositions[1].text = leaderboardScores[1].ToString();
         leaderboardPositions[0].text = leaderboardScores[0].ToString();
-    } 
+    }
 
     private void LoadData()
     {
@@ -127,7 +132,14 @@ public class LeaderboardController : MonoBehaviour
 
     private void OnDisable()
     {
-        GameController.instance.OnLoadLeaderboard -= LoadData;
-        GameController.instance.OnSaveNewBoard -= SaveData;
+        if (!_inTitle)
+        {
+            GameController.instance.OnLoadLeaderboard -= LoadData;
+            GameController.instance.OnSaveNewBoard -= SaveData;
+        }
+        else if (_inTitle)
+        {
+            TitleController.instance.OnLoadTitle -= LoadData;
+        }
     }
 }

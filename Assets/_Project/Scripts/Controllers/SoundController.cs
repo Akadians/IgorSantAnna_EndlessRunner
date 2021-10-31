@@ -1,27 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UI;
-public class SoundController : MonoBehaviour
+public sealed class SoundController : MonoBehaviour
 {
-    public AudioMixer mainMixer;    
+    public AudioMixer mainMixer;
+
+    [SerializeField] private AudioSource _audioSourceMusic;
+    [SerializeField] private AudioSource _audioSourceEffects;
+    [SerializeField] private AudioClip[] _AudioEffect = new AudioClip[5];
+    [SerializeField] private bool _inTitle = false;
 
 
     public void Initializations()
     {
-
+        if (!_inTitle)
+        {
+            GameController.instance.OnGameOver += DeadSound;
+        }
     }
-    
+
     private void Start()
     {
         Initializations();
-    }
-
-    
-    void Update()
-    {
-        
     }
 
     public void SetVolumeMaster(float volume)
@@ -39,4 +38,18 @@ public class SoundController : MonoBehaviour
         mainMixer.SetFloat("volumeBGM", volume);
     }
 
+    private void DeadSound()
+    {
+        _audioSourceMusic.Stop();
+        _audioSourceEffects.PlayOneShot(_AudioEffect[0]);
+
+    }
+
+    private void OnDisable()
+    {
+        if (!_inTitle)
+        {
+            GameController.instance.OnGameOver -= DeadSound;
+        }
+    }
 }
