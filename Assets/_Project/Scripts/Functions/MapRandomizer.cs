@@ -28,19 +28,19 @@ public class MapRandomizer : MonoBehaviour, IPooledObject
         {
             case MapType.CITY_MAP:
 
-                ObjectPooler.Instance.SpawnFromPool("01", new Vector3(0, 0, _offSet), transform.localRotation);
+                ObjectPooler.instance.SpawnFromPool("01", new Vector3(0, 0, _offSet), transform.localRotation);
                 _offSet += 90;
                 break;
 
             case MapType.FARM_MAP:
 
-                ObjectPooler.Instance.SpawnFromPool("02", new Vector3(0, 0, _offSet), transform.localRotation);
+                ObjectPooler.instance.SpawnFromPool("02", new Vector3(0, 0, _offSet), transform.localRotation);
                 _offSet += 90;
                 break;
 
             case MapType.JAPAN_MAP:
 
-                ObjectPooler.Instance.SpawnFromPool("03", new Vector3(0, 0, _offSet), transform.localRotation);
+                ObjectPooler.instance.SpawnFromPool("03", new Vector3(0, 0, _offSet), transform.localRotation);
                 _offSet += 90;
                 break;            
         }

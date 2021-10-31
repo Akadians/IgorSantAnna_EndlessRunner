@@ -36,9 +36,9 @@ public class MapSpawn : MonoBehaviour
     {        
         yield return new WaitForSeconds(1);
         gameObject.SetActive(false);
-        ObjectPooler.Instance.ReturnToPool(_map, this.gameObject);
+        ObjectPooler.instance.ReturnToPool(_map, this.gameObject);
         _mapRandomizerGen.MapGen();
-        StopCoroutine("ReturnPool");        
+        StopCoroutine(ReturnPool());        
     }
     private void ObstaculeSpawn()
     {

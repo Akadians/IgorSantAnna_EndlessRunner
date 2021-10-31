@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
@@ -14,7 +11,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _HUDHighScore;
     [SerializeField] private GameObject _GameOverPanel;
     [SerializeField] private GameObject[] _PausePanels = new GameObject[3];
-    [SerializeField] private LeaderboardController _lead;
+    [SerializeField] private GameObject _HUDScoreMultiplier;
+    [SerializeField] private TMP_Dropdown _qualitySettings;
+    [SerializeField] private LeaderboardController _lead;     
 
     public void Initializations()
     {
@@ -25,12 +24,12 @@ public class UIController : MonoBehaviour
         GameController.instance.OnGameUnpause += DisablePausePanels;        
     }
     public void ScoreHUDUpdate(int score)
-    {        
+    {
         _TextScore = score.ToString();
         _HUDScore.text = _TextScore;
-        _HUDHighScore.text = _lead.leaderboardScores[0].ToString();        
+        _HUDHighScore.text = _lead.leaderboardScores[0].ToString();
 
-        if(_lead.leaderboardScores[0] < score)
+        if (_lead.leaderboardScores[0] < score)
         {
             _HUDHighScore.text = score.ToString();
             return;
@@ -52,7 +51,19 @@ public class UIController : MonoBehaviour
     public void CloseAplication()
     {
         Application.Quit();
-    }    
+    }
+
+    public void ScoreMultiplierIcon (bool activation)
+    {
+        if(activation)
+        {
+            _HUDScoreMultiplier.SetActive(true);
+        }
+        else if (!activation)
+        {
+            _HUDScoreMultiplier.SetActive(false);
+        }
+    }
 
     private void Start()
     {
@@ -77,10 +88,11 @@ public class UIController : MonoBehaviour
         _PausePanels[1].SetActive(false);
         _PausePanels[2].SetActive(true);
     }
+    
     private void OnDisable()
     {
         GameController.instance.OnGameOver -= CallGameOver;
         GameController.instance.OnGamePause -= CallPausePanels;
-        GameController.instance.OnGameUnpause -= DisablePausePanels;
+        GameController.instance.OnGameUnpause -= DisablePausePanels;        
     }
 }

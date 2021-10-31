@@ -4,50 +4,54 @@ using UnityEngine;
 
 public class ScoreMultiplier : MonoBehaviour, IPooledObject
 {
-    [SerializeField] private Player _player;
-    [SerializeField] private GameObject _flag;
-    [SerializeField] private GameObject _child;
+    [SerializeField] private UIController _UIController;
+    [SerializeField] private GameObject _object;
 
+    private Player _player;
     private int _multiplier = 2;
 
     public void Initializations()
     {
-        _player = FindObjectOfType<Player>().GetComponent<Player>();
+        _UIController = FindObjectOfType<UIController>().GetComponent<UIController>();
     }
     public void OnObjectSpawn()
     {
         PickUp();
     }
 
+    private void Start()
+    {
+        Initializations();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent<Player>(out Player player) && _player.canPick == true)
+        if (other.gameObject.TryGetComponent<Player>(out Player player))
         {
-            _player.canPick = false;
-            PickUp();
+            if (player.canPick == true)
+            {
+                _player = player;
+                _player.canPick = false;
+                PickUp();
+            }
         }
     }
 
     private void PickUp()
     {
-        GameController.instance.scoreMultiplicator *= _multiplier;
-        _flag.SetActive(true);
-        _child.SetActive(false);
+        _UIController.ScoreMultiplierIcon(true);
+        GameController.instance.scoreMultiplicator *= _multiplier;        
+        _object.SetActive(false);
         StartCoroutine(EffectEvent());
     }    
 
     private IEnumerator EffectEvent()
     {
         yield return new WaitForSeconds(2f);
-        GameController.instance.scoreMultiplicator /= _multiplier;
+        GameController.instance.scoreMultiplicator /= _multiplier;        
+        ObjectPooler.instance.ReturnToPool("Bonnus", gameObject);
+        _UIController.ScoreMultiplierIcon(false);
         _player.canPick = true;
-        ObjectPooler.Instance.ReturnToPool("Bonnus", gameObject);
-        _flag.SetActive(false);
         StopCoroutine(EffectEvent());
-    }
-
-    private void Start()
-    {
-        Initializations();
-    }
+    }    
 }

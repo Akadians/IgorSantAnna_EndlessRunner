@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4000013020783048}
   - component: {fileID: 3772335840642362252}
   - component: {fileID: 3141847273768635398}
+  - component: {fileID: 8440742892559225734}
   m_Layer: 0
   m_Name: present-box
   m_TagString: Untagged
@@ -58,8 +59,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41f48c5bf8b70e4691c7a2369ec34c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  _flag: {fileID: 34386112197693334, guid: 942bf72cf00ff08448cf310e130fae8d, type: 3}
+  _child: {fileID: 1101057770412068}
+--- !u!114 &8440742892559225734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011157746032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3dbc13045e01443b40c893702192e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waitTime: 1
+  _speedRotation: 5
+  _rotateSelect: 0
+  _duration: 5
+  _timerCount: 0
 --- !u!1 &1055369507583232
 GameObject:
   m_ObjectHideFlags: 0

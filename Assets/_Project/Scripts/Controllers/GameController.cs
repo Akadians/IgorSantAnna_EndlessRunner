@@ -17,7 +17,6 @@ public class GameController : MonoBehaviour
     public GameControllerEventsHandler OnSaveNewBoard;
 
     [SerializeField] private UIController _UIController;
-    [SerializeField] private GameObject _PausePanel;
     [SerializeField] private LeaderboardController _leadboard;
 
     private float _currentScore;
@@ -60,6 +59,11 @@ public class GameController : MonoBehaviour
     {
         SceneManager.LoadScene("PlayableScene");
         Time.timeScale = 1;
+    }
+
+    public void SetQuality(int quality)
+    {
+        QualitySettings.SetQualityLevel(quality);
     }
 
     private void Awake()

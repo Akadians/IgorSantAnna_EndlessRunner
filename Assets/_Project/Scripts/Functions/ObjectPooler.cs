@@ -14,10 +14,30 @@ public class ObjectPooler : MonoBehaviour
     }
 
     
-    public static ObjectPooler Instance;
+    public static ObjectPooler instance;
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;    
 
+    public void Initializations()
+    {
+        instance = this;
+
+        poolDictionary = new Dictionary<string, Queue<GameObject>>();
+
+        foreach (var pool in pools)
+        {
+            Queue<GameObject> objectPool = new Queue<GameObject>();
+            var parent = Instantiate(new GameObject(pool.tag), gameObject.transform, true);
+            for (var i = 0; i < pool.size; i++)
+            {
+                var obj = Instantiate(pool.prefab, parent.transform, true);
+                obj.SetActive(false);
+                objectPool.Enqueue(obj);
+            }
+
+            poolDictionary.Add(pool.tag, objectPool);
+        }
+    }
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, bool setObjectVisible = true)
     {
         if(!poolDictionary.ContainsKey(tag))
@@ -75,32 +95,11 @@ public class ObjectPooler : MonoBehaviour
         }
 
         poolDictionary[tag].Enqueue(objToReturn);
-
-        objToReturn.SetActive(false);
-    }
-
-    private void Awake()
-    {
-        Instance = this;
     }
 
     private void Start()
     {
-        poolDictionary = new Dictionary<string, Queue<GameObject>>();
-
-        foreach (var pool in pools)
-        {
-            Queue<GameObject> objectPool = new Queue<GameObject>();
-            var parent = Instantiate(new GameObject(pool.tag), gameObject.transform, true);
-            for (var i = 0; i < pool.size; i++)
-            {
-                var obj = Instantiate(pool.prefab, parent.transform, true);
-                obj.SetActive(false);
-                objectPool.Enqueue(obj);
-            }
-
-            poolDictionary.Add(pool.tag, objectPool);
-        }
+        Initializations();
     }
 
     private IEnumerator ReturnToPoolAfterSeconds(string tag, GameObject objToReturn, float seconds = 0)
