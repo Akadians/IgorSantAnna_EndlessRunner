@@ -12,9 +12,12 @@ public class TitleController : MonoBehaviour
 
     public TitleControllerHandler OnLoadTitle;
 
+    [SerializeField] private Button _leaderboardButton;
+
     public void Initializations()
     {
-        instance = this;        
+        instance = this;
+        _leaderboardButton.onClick.AddListener(LoadLeaderboard);
     }
 
     public void LoadLeaderboard()
