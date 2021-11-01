@@ -14,7 +14,8 @@ public sealed class SoundController : MonoBehaviour
     {
         if (!_inTitle)
         {
-            GameController.instance.OnGameOver += DeadSound;
+            GameController.instance.OnGamePause += PausedMusic;
+            GameController.instance.OnGameUnpause += PausedMusic;
         }
     }
 
@@ -38,18 +39,38 @@ public sealed class SoundController : MonoBehaviour
         mainMixer.SetFloat("volumeBGM", volume);
     }
 
-    private void DeadSound()
+    public void DeadSound()
     {
         _audioSourceMusic.Stop();
         _audioSourceEffects.PlayOneShot(_AudioEffect[0]);
+        _audioSourceEffects.PlayDelayed(1f);
+    }
 
+    public void PickSound()
+    {
+        _audioSourceEffects.PlayOneShot(_AudioEffect[1]);
+    }
+
+    private void PausedMusic()
+    {
+        if(Time.timeScale == 1)
+        {
+            _audioSourceMusic.Pause();
+            _audioSourceEffects.Play();
+        }
+        else if(Time.timeScale == 0)
+        {
+            _audioSourceEffects.Stop();
+            _audioSourceMusic.UnPause();
+        }
     }
 
     private void OnDisable()
     {
         if (!_inTitle)
         {
-            GameController.instance.OnGameOver -= DeadSound;
+            GameController.instance.OnGamePause -= PausedMusic;
+            GameController.instance.OnGameUnpause -= PausedMusic;
         }
     }
 }

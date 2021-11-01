@@ -12,6 +12,7 @@ public sealed class Player : MonoBehaviour
     [SerializeField] [Range(0, 10)] private float _limiter;
     [SerializeField] [Range(0, 5)] private float _moveTimeInSeconds;
     [SerializeField] private bool _moving = false;
+    [SerializeField] private SoundController _soundControll;
 
     private bool _rightSide = true;
     private Rigidbody _rigB;
@@ -52,7 +53,8 @@ public sealed class Player : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent(out DeathEncounter death))
-        {            
+        {
+            _soundControll.DeadSound();
             EndGame();            
         }
     }    
@@ -104,7 +106,7 @@ public sealed class Player : MonoBehaviour
     }
 
     private void EndGame()
-    {
+    {        
         _speed = 0;
         _anim.SetBool("isDead", true);
         StartCoroutine(GameOverDelay());

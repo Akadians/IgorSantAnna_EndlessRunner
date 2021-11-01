@@ -2096,7 +2096,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482282092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 924, y: -905, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1765906928}
@@ -2214,8 +2214,8 @@ MonoBehaviour:
   _audioSourceMusic: {fileID: 1482282094}
   _audioSourceEffects: {fileID: 1482282096}
   _AudioEffect:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: c243c98aa64f16241a490267cba65423, type: 3}
+  - {fileID: 8300000, guid: 07358fcf7b00fa541876b4723e7d3aeb, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -2229,11 +2229,11 @@ AudioSource:
   m_GameObject: {fileID: 1482282092}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  OutputAudioMixerGroup: {fileID: 3625216736627711477, guid: 19dae0d11d0e5b24abf9e4a84734124a, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 6bf2336e47c25bd41bbcb3f9c9702642, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.2
+  m_Pitch: 0.94
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -32731,6 +32731,10 @@ PrefabInstance:
       propertyPath: _UIController
       value: 
       objectReference: {fileID: 1243121165}
+    - target: {fileID: 6772786712325799809, guid: e4a687bafe18b9c4da4e4d434cfc3738, type: 3}
+      propertyPath: _soundControll
+      value: 
+      objectReference: {fileID: 1482282095}
     - target: {fileID: 6772786712325799811, guid: e4a687bafe18b9c4da4e4d434cfc3738, type: 3}
       propertyPath: m_NotificationBehavior
       value: 3

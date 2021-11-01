@@ -6,6 +6,7 @@ public class ScoreMultiplier : MonoBehaviour, IPooledObject
 {
     [SerializeField] private UIController _UIController;
     [SerializeField] private GameObject _object;
+    [SerializeField] private SoundController _soundController;
 
     private Player _player;
     private int _multiplier = 2;
@@ -13,6 +14,7 @@ public class ScoreMultiplier : MonoBehaviour, IPooledObject
     public void Initializations()
     {
         _UIController = FindObjectOfType<UIController>().GetComponent<UIController>();
+        _soundController = FindObjectOfType<SoundController>().GetComponent<SoundController>();
     }
     public void OnObjectSpawn()
     {
@@ -30,6 +32,7 @@ public class ScoreMultiplier : MonoBehaviour, IPooledObject
         {
             if (player.canPick == true)
             {
+                _soundController.PickSound();
                 _player = player;
                 _player.canPick = false;
                 PickUp();
