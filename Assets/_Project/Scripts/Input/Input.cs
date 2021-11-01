@@ -28,6 +28,29 @@ public class Input : MonoBehaviour
         }
     }
 
+    public void TouchDirection(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if(context.ReadValue<float>() > 0)
+            {
+                _player.ChangeLine(MoveType.RIGHT);
+            }
+            else if (context.ReadValue<float>() < 0)
+            {
+                _player.ChangeLine(MoveType.LEFT);
+            }
+        }
+    }
+
+    public void TouchPress(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+
+        }
+    }
+
     private void Awake()
     {
         Initializations();
@@ -42,13 +65,17 @@ public class Input : MonoBehaviour
         _inputActions = new Main_Input();
         _inputActions.Enable();        
         _inputActions.Gameplay.Left.performed += Left;
-        _inputActions.Gameplay.Right.performed += Right;        
+        _inputActions.Gameplay.Right.performed += Right;
+        _inputActions.Gameplay.TouchDirection.performed += TouchDirection;
+        _inputActions.Gameplay.TouchPress.performed += TouchPress;
     }
 
     private void Unsubscribe()
     {
         _inputActions.Gameplay.Left.performed -= Left;
-        _inputActions.Gameplay.Right.performed -= Right;       
+        _inputActions.Gameplay.Right.performed -= Right;
+        _inputActions.Gameplay.TouchDirection.performed -= TouchDirection;
+        _inputActions.Gameplay.TouchPress.performed -= TouchPress;
         _inputActions.Disable();
     }
 }

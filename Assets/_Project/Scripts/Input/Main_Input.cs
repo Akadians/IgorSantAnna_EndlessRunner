@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Input/Main_Input.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/_Project/Scripts/Input/Main_Input.inputactions'
 
 using System;
 using System.Collections;
@@ -27,34 +27,31 @@ public class @Main_Input : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""a7454592-1759-4120-a482-0e5593119037"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Right"",
                     ""type"": ""Button"",
                     ""id"": ""5b2dc94e-82b5-454b-b805-2b9fe42bd3a4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""TouchDirection"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""ad053f9d-63fa-4431-b258-8149ad0ab533"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""TouchPress"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""04e662d6-c4e0-44b0-9b35-5e87aa79909b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""e69ec1c4-cf5f-4d63-be44-ff1500b09259"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""d3bae4bf-62fc-4a0b-9424-59b3c8711bcb"",
@@ -76,6 +73,28 @@ public class @Main_Input : IInputActionCollection, IDisposable
                     ""action"": ""Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d87ac832-4e71-4658-a9f4-15ecf2e6bef7"",
+                    ""path"": ""<Touchscreen>/delta/x"",
+                    ""interactions"": ""SlowTap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TouchDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cd81a13d-fd5c-4cfa-ac4d-3e7b3b26df27"",
+                    ""path"": ""<Touchscreen>/press"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TouchPress"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -85,8 +104,9 @@ public class @Main_Input : IInputActionCollection, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Left = m_Gameplay.FindAction("Left", throwIfNotFound: true);
-        m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Right = m_Gameplay.FindAction("Right", throwIfNotFound: true);
+        m_Gameplay_TouchDirection = m_Gameplay.FindAction("TouchDirection", throwIfNotFound: true);
+        m_Gameplay_TouchPress = m_Gameplay.FindAction("TouchPress", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -137,15 +157,17 @@ public class @Main_Input : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Gameplay;
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_Left;
-    private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Right;
+    private readonly InputAction m_Gameplay_TouchDirection;
+    private readonly InputAction m_Gameplay_TouchPress;
     public struct GameplayActions
     {
         private @Main_Input m_Wrapper;
         public GameplayActions(@Main_Input wrapper) { m_Wrapper = wrapper; }
         public InputAction @Left => m_Wrapper.m_Gameplay_Left;
-        public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Right => m_Wrapper.m_Gameplay_Right;
+        public InputAction @TouchDirection => m_Wrapper.m_Gameplay_TouchDirection;
+        public InputAction @TouchPress => m_Wrapper.m_Gameplay_TouchPress;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -158,12 +180,15 @@ public class @Main_Input : IInputActionCollection, IDisposable
                 @Left.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLeft;
                 @Left.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLeft;
                 @Left.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLeft;
-                @Jump.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
                 @Right.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRight;
                 @Right.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRight;
                 @Right.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRight;
+                @TouchDirection.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTouchDirection;
+                @TouchDirection.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTouchDirection;
+                @TouchDirection.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTouchDirection;
+                @TouchPress.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTouchPress;
+                @TouchPress.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTouchPress;
+                @TouchPress.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTouchPress;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -171,12 +196,15 @@ public class @Main_Input : IInputActionCollection, IDisposable
                 @Left.started += instance.OnLeft;
                 @Left.performed += instance.OnLeft;
                 @Left.canceled += instance.OnLeft;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
                 @Right.started += instance.OnRight;
                 @Right.performed += instance.OnRight;
                 @Right.canceled += instance.OnRight;
+                @TouchDirection.started += instance.OnTouchDirection;
+                @TouchDirection.performed += instance.OnTouchDirection;
+                @TouchDirection.canceled += instance.OnTouchDirection;
+                @TouchPress.started += instance.OnTouchPress;
+                @TouchPress.performed += instance.OnTouchPress;
+                @TouchPress.canceled += instance.OnTouchPress;
             }
         }
     }
@@ -184,7 +212,8 @@ public class @Main_Input : IInputActionCollection, IDisposable
     public interface IGameplayActions
     {
         void OnLeft(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
         void OnRight(InputAction.CallbackContext context);
+        void OnTouchDirection(InputAction.CallbackContext context);
+        void OnTouchPress(InputAction.CallbackContext context);
     }
 }
