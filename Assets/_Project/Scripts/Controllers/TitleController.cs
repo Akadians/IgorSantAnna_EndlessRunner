@@ -32,7 +32,7 @@ public class TitleController : MonoBehaviour
         Application.Quit();
     }
 
-    private void Start()
+    private void Awake()
     {
         Initializations();
     }
